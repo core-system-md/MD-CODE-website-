@@ -1,7 +1,18 @@
+# Cloudflare Pages Redirects
+# Handle clean URLs and SPA routing
+
+# Static assets - NO redirect
+/css/*  /css/:splat  200
+/js/*   /js/:splat   200
+/assets/* /assets/:splat 200
+
+# HTML pages
 /organization/md-code        /organization/md-code.html    200
 /organization/core-system    /organization/core-system.html 200
 /tools/assessments           /tools/assessments.html       200
 /tools/resources             /tools/resources.html         200
 /corporate/about             /corporate/about.html         200
 /contact                     /contact.html                 200
+
+# Fallback for any unmatched routes
 /*                           /index.html                   200
