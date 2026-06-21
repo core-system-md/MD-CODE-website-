@@ -1,1 +1,9 @@
-_redirects
+# Cloudflare Pages Redirects
+# Clean URLs only - NO catch-all to prevent MIME type errors
+
+/organization/md-code        /organization/md-code.html    200
+/organization/core-system    /organization/core-system.html 200
+/tools/assessments           /tools/assessments.html       200
+/tools/resources             /tools/resources.html         200
+/corporate/about             /corporate/about.html         200
+/contact                     /contact.html                 200
