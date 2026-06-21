@@ -1,10 +1,9 @@
 /**
  * THE MD CODE - Main JavaScript Engine
- * Handles: i18n, RTL/LTR, Forms, Tabs, Download Gate, Print, Supabase Sync
  */
 
 // ============================================
-// SUPABASE INITIALIZATION
+// SUPABASE
 // ============================================
 const SUPABASE_URL = 'https://fcelaqzradnxhuupzfuf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjZWxhcXpyYWRueGh1dXB6ZnVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5ODM0OTMsImV4cCI6MjA5NzU1OTQ5M30.PSjR4oBM8ioU0ezyIzDl3YnE_FMOPl-giLWeYxm8oZ4';
@@ -15,7 +14,29 @@ if (typeof supabase !== 'undefined') {
 }
 
 // ============================================
-// I18N & LANGUAGE SWITCHER
+// WHATSAPP HELPER (للتواصل فقط)
+// ============================================
+const WhatsAppAlert = {
+    PHONE: '962786595990',
+    
+    sendContact(data) {
+        const msg = `*رسالة جديدة - THE MD CODE* 📩
+
+*الاسم:* ${data.name}
+*الإيميل:* ${data.email || '—'}
+*الهاتف:* ${data.phone || '—'}
+
+*الرسالة:*
+${data.message}
+
+*التاريخ:* ${new Date().toLocaleString('ar-SA')}`;
+        
+        window.open(`https://wa.me/${this.PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+};
+
+// ============================================
+// I18N
 // ============================================
 const I18N = {
     currentLang: localStorage.getItem('mdcode-lang') || 'ar',
@@ -26,11 +47,9 @@ const I18N = {
     },
 
     setupToggle() {
-        const toggles = document.querySelectorAll('.lang-toggle-btn');
-        toggles.forEach(btn => {
+        document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const lang = e.target.dataset.lang;
-                this.switchLanguage(lang);
+                this.switchLanguage(e.target.dataset.lang);
             });
         });
     },
@@ -50,58 +69,8 @@ const I18N = {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
-        document.querySelectorAll('.lang-ar').forEach(el => {
-            el.style.display = lang === 'ar' ? '' : 'none';
-        });
-        document.querySelectorAll('.lang-en').forEach(el => {
-            el.style.display = lang === 'en' ? '' : 'none';
-        });
-
-        document.querySelectorAll('[data-placeholder-ar]').forEach(el => {
-            el.placeholder = lang === 'ar' ? el.dataset.placeholderAr : el.dataset.placeholderEn;
-        });
-
-        document.querySelectorAll('[data-text-ar]').forEach(el => {
-            el.textContent = lang === 'ar' ? el.dataset.textAr : el.dataset.textEn;
-        });
-
-        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
-    },
-
-    get(key) {
-        const dict = TRANSLATIONS[this.currentLang];
-        return dict && dict[key] ? dict[key] : key;
-    }
-};
-
-const TRANSLATIONS = {
-    ar: {
-        submitSuccess: 'تم الإرسال بنجاح!',
-        submitError: 'حدث خطأ. يرجى المحاولة مرة أخرى.',
-        requiredField: 'هذا الحقل مطلوب',
-        invalidEmail: 'البريد الإلكتروني غير صالح',
-        invalidPhone: 'رقم الهاتف غير صالح',
-        loading: 'جاري الإرسال...',
-        gateTitle: 'الوصول المتميز',
-        gateDesc: 'قم بتسجيل الدخول للوصول إلى هذا المحتوى الحصري.',
-        gateBtn: 'تسجيل الدخول',
-        printBtn: 'طباعة',
-        close: 'إغلاق',
-        selectOption: 'اختر...'
-    },
-    en: {
-        submitSuccess: 'Submitted successfully!',
-        submitError: 'An error occurred. Please try again.',
-        requiredField: 'This field is required',
-        invalidEmail: 'Invalid email address',
-        invalidPhone: 'Invalid phone number',
-        loading: 'Sending...',
-        gateTitle: 'Premium Access',
-        gateDesc: 'Please log in to access this exclusive content.',
-        gateBtn: 'Log In',
-        printBtn: 'Print',
-        close: 'Close',
-        selectOption: 'Select...'
+        document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang === 'ar' ? '' : 'none');
+        document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
     }
 };
 
@@ -136,7 +105,6 @@ const FormHandler = {
     showFieldError(input, message) {
         const existing = input.parentElement.querySelector('.field-error');
         if (existing) existing.remove();
-
         const error = document.createElement('span');
         error.className = 'field-error';
         error.style.cssText = 'color: #e74c3c; font-size: 0.8rem; margin-top: 0.25rem; display: block;';
@@ -163,24 +131,24 @@ const FormHandler = {
         const phone = form.querySelector('[name="phone"]');
         const message = form.querySelector('[name="message"]');
 
-        if (!name.value.trim()) { this.showFieldError(name, I18N.get('requiredField')); valid = false; }
+        if (!name.value.trim()) { this.showFieldError(name, 'هذا الحقل مطلوب'); valid = false; }
         else this.clearFieldError(name);
 
         if (email.value && !this.validateEmail(email.value)) {
-            this.showFieldError(email, I18N.get('invalidEmail')); valid = false;
+            this.showFieldError(email, 'البريد الإلكتروني غير صالح'); valid = false;
         } else this.clearFieldError(email);
 
         if (phone.value && !this.validatePhone(phone.value)) {
-            this.showFieldError(phone, I18N.get('invalidPhone')); valid = false;
+            this.showFieldError(phone, 'رقم الهاتف غير صالح'); valid = false;
         } else this.clearFieldError(phone);
 
-        if (!message.value.trim()) { this.showFieldError(message, I18N.get('requiredField')); valid = false; }
+        if (!message.value.trim()) { this.showFieldError(message, 'هذا الحقل مطلوب'); valid = false; }
         else this.clearFieldError(message);
 
         if (!valid) return;
 
         submitBtn.disabled = true;
-        submitBtn.textContent = I18N.get('loading');
+        submitBtn.textContent = 'جاري الإرسال...';
 
         try {
             if (!supabaseClient) throw new Error('Supabase not initialized');
@@ -197,11 +165,21 @@ const FormHandler = {
 
             if (error) throw error;
 
-            this.showSuccess(form, I18N.get('submitSuccess'));
+            // ✅ فتح واتساب تلقائياً
+            WhatsAppAlert.sendContact({
+                name: name.value.trim(),
+                email: email.value.trim(),
+                phone: phone.value.trim(),
+                message: message.value.trim()
+            });
+
+            // ✅ رسالة نجاح واضحة
+            this.showSuccess(form, '✅ تم إرسال رسالتك بنجاح! سوف نتواصل معك في أقرب وقت. جاري فتح واتساب...');
             form.reset();
+
         } catch (err) {
             console.error('Contact form error:', err);
-            this.showError(form, I18N.get('submitError'));
+            this.showError(form, '❌ حدث خطأ. يرجى المحاولة مرة أخرى.');
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -220,17 +198,17 @@ const FormHandler = {
         const source = form.querySelector('[name="source_assessment"]');
 
         let valid = true;
-        if (!name.value.trim()) { this.showFieldError(name, I18N.get('requiredField')); valid = false; }
+        if (!name.value.trim()) { this.showFieldError(name, 'هذا الحقل مطلوب'); valid = false; }
         else this.clearFieldError(name);
 
         if (phone.value && !this.validatePhone(phone.value)) {
-            this.showFieldError(phone, I18N.get('invalidPhone')); valid = false;
+            this.showFieldError(phone, 'رقم الهاتف غير صالح'); valid = false;
         } else this.clearFieldError(phone);
 
         if (!valid) return;
 
         submitBtn.disabled = true;
-        submitBtn.textContent = I18N.get('loading');
+        submitBtn.textContent = 'جاري الإرسال...';
 
         try {
             if (!supabaseClient) throw new Error('Supabase not initialized');
@@ -253,11 +231,11 @@ const FormHandler = {
 
             if (error) throw error;
 
-            this.showSuccess(form, I18N.get('submitSuccess'));
+            this.showSuccess(form, '✅ تم الإرسال بنجاح!');
             form.reset();
         } catch (err) {
             console.error('Lead form error:', err);
-            this.showError(form, I18N.get('submitError'));
+            this.showError(form, '❌ حدث خطأ. يرجى المحاولة مرة أخرى.');
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -276,16 +254,16 @@ const FormHandler = {
         const clinic = form.querySelector('[name="clinic_name"]');
 
         let valid = true;
-        if (!name.value.trim()) { this.showFieldError(name, I18N.get('requiredField')); valid = false; }
+        if (!name.value.trim()) { this.showFieldError(name, 'هذا الحقل مطلوب'); valid = false; }
         else this.clearFieldError(name);
 
-        if (!phone.value.trim()) { this.showFieldError(phone, I18N.get('requiredField')); valid = false; }
+        if (!phone.value.trim()) { this.showFieldError(phone, 'هذا الحقل مطلوب'); valid = false; }
         else this.clearFieldError(phone);
 
         if (!valid) return;
 
         submitBtn.disabled = true;
-        submitBtn.textContent = I18N.get('loading');
+        submitBtn.textContent = 'جاري الإرسال...';
 
         try {
             if (!supabaseClient) throw new Error('Supabase not initialized');
@@ -303,11 +281,11 @@ const FormHandler = {
 
             if (error) throw error;
 
-            this.showSuccess(form, I18N.get('submitSuccess'));
+            this.showSuccess(form, '✅ تم الإرسال بنجاح!');
             form.reset();
         } catch (err) {
             console.error('Booking form error:', err);
-            this.showError(form, I18N.get('submitError'));
+            this.showError(form, '❌ حدث خطأ. يرجى المحاولة مرة أخرى.');
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = originalText;
@@ -320,11 +298,11 @@ const FormHandler = {
 
         const alert = document.createElement('div');
         alert.className = 'form-alert';
-        alert.style.cssText = 'background: #d4edda; color: #155724; padding: 1rem; border-radius: 12px; margin-top: 1rem; text-align: center;';
+        alert.style.cssText = 'background: #d4edda; color: #155724; padding: 1rem; border-radius: 12px; margin-top: 1rem; text-align: center; font-weight: 600;';
         alert.textContent = message;
         form.parentElement.appendChild(alert);
 
-        setTimeout(() => alert.remove(), 5000);
+        setTimeout(() => alert.remove(), 8000);
     },
 
     showError(form, message) {
@@ -333,7 +311,7 @@ const FormHandler = {
 
         const alert = document.createElement('div');
         alert.className = 'form-alert';
-        alert.style.cssText = 'background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 12px; margin-top: 1rem; text-align: center;';
+        alert.style.cssText = 'background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 12px; margin-top: 1rem; text-align: center; font-weight: 600;';
         alert.textContent = message;
         form.parentElement.appendChild(alert);
 
@@ -342,25 +320,20 @@ const FormHandler = {
 };
 
 // ============================================
-// TABS SYSTEM (Resources Page)
+// TABS SYSTEM
 // ============================================
 const TabSystem = {
     init() {
-        const tabNavs = document.querySelectorAll('.tab-nav');
-        tabNavs.forEach(nav => {
+        document.querySelectorAll('.tab-nav').forEach(nav => {
             const buttons = nav.querySelectorAll('.tab-btn');
             const panels = document.querySelectorAll('.tab-panel');
 
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const target = btn.dataset.tab;
-
                     buttons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-
-                    panels.forEach(p => {
-                        p.classList.toggle('active', p.dataset.panel === target);
-                    });
+                    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
                 });
             });
         });
@@ -368,11 +341,10 @@ const TabSystem = {
 };
 
 // ============================================
-// DOWNLOAD GATE (Supabase Lead Capture + File Open)
+// DOWNLOAD GATE (Supabase فقط - بدون واتساب)
 // ============================================
 const DownloadGate = {
     COUNTRIES: [
-        // === الدول العربية ===
         { code: 'JO', name: 'الأردن', flag: '🇯🇴', dial: '+962', regex: /^7[789]\d{7}$/, len: 9 },
         { code: 'SA', name: 'السعودية', flag: '🇸🇦', dial: '+966', regex: /^5\d{8}$/, len: 9 },
         { code: 'AE', name: 'الإمارات', flag: '🇦🇪', dial: '+971', regex: /^5\d{8}$/, len: 9 },
@@ -393,11 +365,9 @@ const DownloadGate = {
         { code: 'MR', name: 'موريتانيا', flag: '🇲🇷', dial: '+222', regex: /^[234]\d{7}$/, len: 8 },
         { code: 'SO', name: 'الصومال', flag: '🇸🇴', dial: '+252', regex: /^[567]\d{7}$/, len: 8 },
         { code: 'DJ', name: 'جيبوتي', flag: '🇩🇯', dial: '+253', regex: /^[78]\d{6}$/, len: 7 },
-        // === دول الشرق الأوسط ===
         { code: 'TR', name: 'تركيا', flag: '🇹🇷', dial: '+90', regex: /^5\d{9}$/, len: 10 },
         { code: 'IR', name: 'إيران', flag: '🇮🇷', dial: '+98', regex: /^9\d{9}$/, len: 10 },
         { code: 'IL', name: 'إسرائيل', flag: '🇮🇱', dial: '+972', regex: /^5\d{8}$/, len: 9 },
-        // === الاتحاد الأوروبي ===
         { code: 'DE', name: 'ألمانيا', flag: '🇩🇪', dial: '+49', regex: /^1\d{10,11}$/, len: 11 },
         { code: 'FR', name: 'فرنسا', flag: '🇫🇷', dial: '+33', regex: /^[67]\d{8}$/, len: 9 },
         { code: 'IT', name: 'إيطاليا', flag: '🇮🇹', dial: '+39', regex: /^3\d{9,10}$/, len: 10 },
@@ -425,11 +395,9 @@ const DownloadGate = {
         { code: 'LU', name: 'لوكسمبورغ', flag: '🇱🇺', dial: '+352', regex: /^6\d{8}$/, len: 9 },
         { code: 'MT', name: 'مالطا', flag: '🇲🇹', dial: '+356', regex: /^[79]\d{7}$/, len: 8 },
         { code: 'CY', name: 'قبرص', flag: '🇨🇾', dial: '+357', regex: /^9\d{7}$/, len: 8 },
-        // === أمريكا الشمالية ===
         { code: 'US', name: 'الولايات المتحدة', flag: '🇺🇸', dial: '+1', regex: /^[2-9]\d{9}$/, len: 10 },
         { code: 'CA', name: 'كندا', flag: '🇨🇦', dial: '+1', regex: /^[2-9]\d{9}$/, len: 10 },
         { code: 'MX', name: 'المكسيك', flag: '🇲🇽', dial: '+52', regex: /^1\d{10}$/, len: 11 },
-        // === دول أخرى شائعة ===
         { code: 'GB', name: 'المملكة المتحدة', flag: '🇬🇧', dial: '+44', regex: /^7\d{9}$/, len: 10 },
         { code: 'CH', name: 'سويسرا', flag: '🇨🇭', dial: '+41', regex: /^7\d{8}$/, len: 9 },
         { code: 'NO', name: 'النرويج', flag: '🇳🇴', dial: '+47', regex: /^[49]\d{7}$/, len: 8 },
@@ -629,9 +597,7 @@ const DownloadGate = {
     fillCountrySelect() {
         const select = document.querySelector('#download-modal [name="country_code"]');
         if (!select || select.options.length > 2) return;
-        while (select.options.length > 2) {
-            select.remove(1);
-        }
+        while (select.options.length > 2) select.remove(1);
         this.COUNTRIES.forEach(c => {
             const opt = document.createElement('option');
             opt.value = c.dial;
@@ -651,7 +617,6 @@ const DownloadGate = {
         if (!select || !input) return;
 
         const selected = select.options[select.selectedIndex];
-
         if (selected.value === 'custom') {
             customContainer.style.display = 'block';
             input.placeholder = 'أدخل الرقم مع المفتاح';
@@ -704,9 +669,7 @@ const DownloadGate = {
             return;
         }
 
-        let fullPhone;
-        let countryName;
-        let countryCodeStr;
+        let fullPhone, countryName, countryCodeStr;
 
         if (countryCode === 'custom') {
             const customDial = form.querySelector('[name="custom_dial"]').value.trim();
@@ -820,7 +783,6 @@ const DownloadGate = {
             'training-manual': '/assets/downloads/training-manual.pdf',
             'assessment-templates': '/assets/downloads/assessment-templates.pdf'
         };
-
         const filePath = fileMap[asset] || `/assets/downloads/${asset}.pdf`;
         window.open(filePath, '_blank');
     },
@@ -837,7 +799,7 @@ const DownloadGate = {
 };
 
 // ============================================
-// PRINT FUNCTIONALITY
+// PRINT
 // ============================================
 const PrintSystem = {
     init() {
@@ -883,7 +845,7 @@ const PrintSystem = {
 };
 
 // ============================================
-// MOBILE NAVIGATION
+// MOBILE NAV
 // ============================================
 const MobileNav = {
     init() {
@@ -898,7 +860,7 @@ const MobileNav = {
 };
 
 // ============================================
-// SMOOTH SCROLL & ANIMATIONS
+// ANIMATIONS
 // ============================================
 const AnimationSystem = {
     init() {
@@ -924,7 +886,7 @@ const AnimationSystem = {
 };
 
 // ============================================
-// INITIALIZATION
+// INIT
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
     I18N.init();
