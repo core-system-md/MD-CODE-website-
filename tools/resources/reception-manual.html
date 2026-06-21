@@ -6,94 +6,352 @@
     <title>دليل الـ 14 يوماً لرفع نسبة قبول العلاج | THE MD CODE</title>
     <link rel="icon" type="image/png" href="/assets/icon-gold.png">
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; background: #F9F9F9; color: #1A2536; line-height: 1.8; padding: 0; margin: 0; }
-        .container { max-width: 850px; margin: 0 auto; padding: 2rem; }
-        .hero { background: linear-gradient(135deg, #1A2536, #005B5C); color: white; padding: 3rem 2rem; text-align: center; }
-        .hero h1 { margin: 0; font-size: 1.8rem; }
-        .hero p { margin: 0.5rem 0 0; opacity: 0.9; }
-        h2 { color: #005B5C; font-size: 1.4rem; margin-top: 2.5rem; border-bottom: 2px solid #C5A059; padding-bottom: 0.5rem; }
-        h3 { color: #1A2536; font-size: 1.1rem; margin-top: 1.5rem; }
-        p { font-size: 15px; margin-bottom: 1rem; }
-        ul { list-style: none; padding: 0; }
-        li { position: relative; padding-right: 1.5rem; margin-bottom: 0.75rem; font-size: 15px; }
-        li::before { content: "•"; position: absolute; right: 0; color: #C5A059; font-size: 1.2rem; }
-        blockquote { background: #F0FDF4; border-right: 4px solid #005B5C; padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; font-style: italic; }
-        .warning { background: #FEF3C7; border-right: 4px solid #C5A059; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-size: 14px; color: #92400E; }
-        .printable { background: #FFF; border: 2px dashed #C5A059; border-radius: 12px; padding: 2rem; margin-top: 3rem; }
-        .printable h3 { text-align: center; margin-bottom: 1.5rem; }
-        .form-field { border: 1px solid #CBD5E1; padding: 1rem; margin-bottom: 1rem; background: #FAFAFA; border-radius: 6px; }
-        .print-btn { position: fixed; bottom: 2rem; left: 2rem; background: linear-gradient(135deg, #C5A059, #B08D4E); color: white; padding: 1rem 1.5rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; }
-        footer { background: #1A2536; color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
-        footer a { color: #C5A059; text-decoration: none; }
-        @media print { .print-btn, footer { display: none !important; } .printable { border: 1px solid #000; } }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #F9F9F9;
+            color: #1A2536;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+        }
+        .header {
+            background: linear-gradient(135deg, #1A2536 0%, #005B5C 100%);
+            color: white;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+        .header .tag {
+            display: inline-block;
+            background: rgba(197,160,89,0.2);
+            color: #C5A059;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .content {
+            padding: 2.5rem 2rem;
+        }
+        .warning-box {
+            background: #FEF3C7;
+            border-right: 4px solid #C5A059;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #92400E;
+            line-height: 1.7;
+        }
+        h2 {
+            color: #005B5C;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid #C5A059;
+            line-height: 1.4;
+        }
+        h3 {
+            color: #1A2536;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 1.8rem 0 0.8rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            color: #334155;
+            line-height: 1.9;
+        }
+        ul {
+            list-style: none;
+            margin: 1rem 0 1.5rem;
+            padding: 0;
+        }
+        li {
+            position: relative;
+            padding-right: 1.8rem;
+            margin-bottom: 0.9rem;
+            color: #334155;
+            line-height: 1.8;
+        }
+        li::before {
+            content: "●";
+            position: absolute;
+            right: 0;
+            top: 0.15rem;
+            color: #C5A059;
+            font-size: 0.7rem;
+        }
+        li strong {
+            color: #005B5C;
+        }
+        blockquote {
+            background: #F0FDF4;
+            border-right: 4px solid #005B5C;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #1A2536;
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+        .printable-section {
+            background: #FAFAFA;
+            border: 2px dashed #C5A059;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        .printable-section h3 {
+            text-align: center;
+            color: #1A2536;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+        .form-line {
+            border-bottom: 1px dotted #94A3B8;
+            display: inline-block;
+            min-width: 100px;
+            height: 1.5rem;
+            vertical-align: bottom;
+        }
+        .form-block {
+            border: 1px solid #CBD5E1;
+            background: white;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            min-height: 80px;
+        }
+        .form-block strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1A2536;
+            font-size: 0.95rem;
+        }
+        .checkbox-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .checkbox-line input {
+            width: 18px;
+            height: 18px;
+        }
+        .signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #E2E8F0;
+        }
+        .signatures > div {
+            text-align: center;
+            width: 45%;
+        }
+        .signatures .line {
+            border-bottom: 1px solid #333;
+            margin-top: 2rem;
+            height: 40px;
+        }
+        .footer {
+            background: #1A2536;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .footer a {
+            color: #C5A059;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        .footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+        .print-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            background: linear-gradient(135deg, #C5A059, #B08D4E);
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(197,160,89,0.4);
+            z-index: 1000;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(197,160,89,0.5);
+        }
+        .nav-back {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(26,37,54,0.85);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .nav-back:hover {
+            background: rgba(26,37,54,0.95);
+        }
+
+        @media (max-width: 768px) {
+            .content { padding: 1.5rem 1rem; }
+            .header { padding: 2rem 1rem 1.5rem; }
+            .header h1 { font-size: 1.4rem; }
+            .print-btn { bottom: 1rem; left: 1rem; padding: 0.75rem 1.2rem; font-size: 0.9rem; }
+            .signatures { flex-direction: column; gap: 1.5rem; }
+            .signatures > div { width: 100%; }
+        }
+
+        @media print {
+            .print-btn, .nav-back { display: none !important; }
+            .page { box-shadow: none; max-width: 100%; }
+            body { background: white; }
+            .printable-section {
+                border: 1px solid #999;
+                page-break-before: always;
+                margin-top: 0;
+            }
+            .content { padding: 1.5rem; }
+            h2 { page-break-after: avoid; }
+            p, li { orphans: 3; widows: 3; }
+            .footer { background: #1A2536 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
     </style>
 </head>
 <body>
 
-<button onclick="window.print()" class="print-btn">🖨️ طباعة / حفظ PDF</button>
+<a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
+<button onclick="window.print()" class="print-btn no-print">🖨️ طباعة / PDF</button>
 
-<div class="hero">
-    <div style="font-size: 14px; opacity: 0.8; margin-bottom: 0.5rem;">دليل تطبيقي للأطباء</div>
-    <h1>دليل الـ 14 يوماً</h1>
-    <p>لرفع نسبة قبول العلاج إلى 75%</p>
+<div class="page">
+    <div class="header">
+        <div class="tag">دليل تطبيقي للأطباء</div>
+        <h1>دليل الـ 14 يوماً</h1>
+        <p>لرفع نسبة قبول العلاج إلى 75% — من الجلسة الواحدة إلى الخطة الكاملة</p>
+    </div>
+
+    <div class="content">
+        <div class="warning-box">
+            <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن خطي.
+        </div>
+
+        <h2>1. التحول من الجلسة الواحدة إلى الخطة الكاملة</h2>
+        <p>التوقف الفوري عن بيع جلسات مفردة أو إجراءات مجزأة داخل غرفة الكشف. الممارسة المعتمدة تقضي باستبدالها بـ <strong>"خطة علاجية مكتوبة"</strong> واضحة ومقسمة إلى مراحل زمنية وموثقة بالكامل في ملف المريض.</p>
+        <p>عند فحص المريض، اشرح له بوضوح الأثر السلبي والمشاكل الصحية والمالية الناتجة عن تأجيل أو إهمال استكمال العلاج كاملاً.</p>
+
+        <h2>2. فهم المريض ومساعدته على القرار</h2>
+        <p>يعتمد النجاح على وضع نفسك مكان المريض لفهم مخاوفه الحقيقية وعزل قلقه من القرار المالي أو الطبي. اطرح دائماً أسئلة مفتوحة:</p>
+        <blockquote>"ما هي النتائج والأثر الصحي الذي تتمنى رؤيته بعد انتهاء العلاج تماماً؟"</blockquote>
+        <p>هذا الأسلوب يساعد المريض على اكتشاف رغبته بالشفاء بنفسه دون الشعور بأي ضغط بيعي تجاري مباشر.</p>
+
+        <h2>3. الاتفاق المسبق مع المريض (Up-Front Contract)</h2>
+        <p>تنظيم وتوجيه وقت الجلسة الاستشارية الأولى يمنع تردد المريض عند الحديث عن التفاصيل المالية لاحقاً. يلتزم الطبيب بصياغة اتفاق في أول دقيقتين من اللقاء:</p>
+        <blockquote>"سأقوم اليوم بفحصك بدقة لنعرف المشكلة الحقيقية، وفي نهاية الجلسة سأعطيك خطة مكتوبة بمراحلها وتكلفة كل مرحلة، ونقرر معاً من أين نبدأ. هل هذا يناسبك؟"</blockquote>
+
+        <h2>4. تقديم 3 خيارات محددة فقط</h2>
+        <p>حماية المريض من التشتت الناتج عن كثرة التفاصيل الطبية المعقدة. الممارسة الطبية الحديثة تلزم بحصر الحلول المعروضة في <strong>3 خيارات فقط</strong> كحد أقصى:</p>
+        <ul>
+            <li><strong>الحل الأول:</strong> الخطة العلاجية المثالية الكاملة لتحقيق أفضل نتيجة مستدامة.</li>
+            <li><strong>الحل الثاني:</strong> الخطة المرحلية المقسمة على فترات زمنية متباعدة لتسهيل الالتزام.</li>
+            <li><strong>الحل الثالث:</strong> الإجراء الأساسي المستعجل لإيقاف الضرر الحالي فقط.</li>
+        </ul>
+
+        <h2>5. التعامل مع "سأفكر وأتصل لاحقاً"</h2>
+        <p>تطبيق تمرين التناغم الميداني لاكتشاف الاعتراض الحقيقي المخفي وراء التردد. الرد المباشر بلطف وبصيغة مهنية:</p>
+        <blockquote>"بالتأكيد، قرارك مهم جداً. ولكن دعني أسألك: ما الذي يحتاج إلى تفكير أكثر لنتعامل معه الآن؛ هل هو الوقت، التكلفة، أم تفصيل آخر في الخطة الطبية؟"</blockquote>
+
+        <div class="printable-section">
+            <h3>نموذج الخطة العلاجية المكتوبة — للطباعة</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                <div><strong>اسم المريض:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+                <div><strong>التاريخ:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+            </div>
+            <div style="margin-bottom: 1rem;"><strong>رقم الملف:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+
+            <div class="form-block">
+                <strong>1. التشخيص الحالي والمشاكل الناتجة عن تأجيل العلاج:</strong>
+                <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 0.5rem;">................................................................................................................................................................................................................................................................................................................................................................................................</p>
+            </div>
+
+            <div class="form-block">
+                <strong>2. مراحل المنظومة العلاجية المقترحة:</strong>
+                <div style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 2.2;">
+                    • المرحلة الأولى: ........................................................ التكلفة: .............. الجدول: ..............<br>
+                    • المرحلة الثانية: ........................................................ التكلفة: .............. الجدول: ..............<br>
+                    • المرحلة الثالثة: ........................................................ التكلفة: .............. الجدول: ..............
+                </div>
+            </div>
+
+            <div class="form-block">
+                <strong>3. نتيجة الاتفاق المسبق وقبول المريض:</strong>
+                <div class="checkbox-line"><input type="checkbox"> المريض وافق على الخطة كاملة وتم تسجيلها على نظام CORE إلكترونياً.</div>
+                <div class="checkbox-line"><input type="checkbox"> المريض اختار الحل المرحلي البديل (البدء بالمرحلة الأولى وجدولة الباقي).</div>
+            </div>
+
+            <div class="signatures">
+                <div>
+                    <strong>توقيع الطبيب الاستشاري</strong>
+                    <div class="line"></div>
+                </div>
+                <div>
+                    <strong>توقيع المريض بالالتزام بالخطة</strong>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p style="font-size: 1rem; margin-bottom: 0.5rem;">
+            <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> |
+            <a href="tel:+962786595990">+962 78 659 5990</a> |
+            <a href="https://wa.me/962786595990">واتساب</a>
+        </p>
+        <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
+    </div>
 </div>
-
-<div class="container">
-
-    <div class="warning">
-        <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن.
-    </div>
-
-    <h2>1. التحول من الجلسة الواحدة إلى الخطة الكاملة</h2>
-    <p>التوقف الفوري عن بيع جلسات مفردة أو إجراءات مجزأة. الممارسة المعتمدة تقضي باستبدالها بـ <strong>"خطة علاجية مكتوبة"</strong> واضحة ومقسمة إلى مراحل زمنية.</p>
-    <p>عند فحص المريض، اشرح له بوضوح الأثر السلبي والمشاكل الصحية الناتجة عن تأجيل أو إهمال استكمال العلاج كاملاً.</p>
-
-    <h2>2. فهم المريض ومساعدته على القرار</h2>
-    <p>يعتمد النجاح على وضع نفسك مكان المريض لفهم مخاوفه الحقيقية. اطرح دائماً أسئلة مفتوحة:</p>
-    <blockquote>"ما هي النتائج والأثر الصحي الذي تتمنى رؤيته بعد انتهاء العلاج تماماً؟"</blockquote>
-
-    <h2>3. الاتفاق المسبق مع المريض</h2>
-    <p>يلتزم الطبيب بصياغة اتفاق في أول دقيقتين من اللقاء:</p>
-    <blockquote>"سأقوم اليوم بفحصك بدقة لنعرف المشكلة الحقيقية، وفي نهاية الجلسة سأعطيك خطة مكتوبة بمراحلها وتكلفة كل مرحلة، ونقرر معاً من أين نبدأ. هل هذا يناسبك؟"</blockquote>
-
-    <h2>4. تقديم 3 خيارات محددة فقط</h2>
-    <ul>
-        <li><strong>الحل الأول:</strong> الخطة العلاجية المثالية الكاملة.</li>
-        <li><strong>الحل الثاني:</strong> الخطة المرحلية المقسمة على فترات زمنية.</li>
-        <li><strong>الحل الثالث:</strong> الإجراء الأساسي المستعجل فقط.</li>
-    </ul>
-
-    <h2>5. التعامل مع "سأفكر وأتصل لاحقاً"</h2>
-    <blockquote>"بالتأكيد، قرارك مهم جداً. ولكن دعني أسألك: ما الذي يحتاج إلى تفكير أكثر لنتعامل معه الآن؛ هل هو الوقت، التكلفة، أم تفصيل آخر؟"</blockquote>
-
-    <div class="printable">
-        <h3>نموذج الخطة العلاجية المكتوبة — للطباعة</h3>
-        <div class="form-field"><strong>اسم المريض:</strong> .................................................... <strong>التاريخ:</strong> .............................</div>
-        <div class="form-field"><strong>1. التشخيص الحالي:</strong><br><br>................................................................................................</div>
-        <div class="form-field"><strong>2. مراحل الخطة العلاجية:</strong><br><br>
-            • المرحلة الأولى: .............................. التكلفة: .............. الجدول: ..............<br>
-            • المرحلة الثانية: .............................. التكلفة: .............. الجدول: ..............<br>
-            • المرحلة الثالثة: .............................. التكلفة: .............. الجدول: ..............
-        </div>
-        <div class="form-field"><strong>3. نتيجة الاتفاق:</strong><br>
-            [ &nbsp; ] وافق على الخطة كاملة &nbsp;&nbsp;&nbsp; [ &nbsp; ] اختار الحل المرحلي
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-            <div>توقيع الطبيب: ..........................</div>
-            <div>توقيع المريض: ..........................</div>
-        </div>
-    </div>
-
-</div>
-
-<footer>
-    <div style="font-size: 14px; margin-bottom: 1rem;">
-        <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> | 
-        <a href="tel:+962786595990">+962 78 659 5990</a> | 
-        <a href="https://wa.me/962786595990">واتساب</a>
-    </div>
-    <div style="font-size: 12px; opacity: 0.6;">© 2026 THE MD CODE. جميع الحقوق محفوظة.</div>
-</footer>
 
 </body>
 </html>
