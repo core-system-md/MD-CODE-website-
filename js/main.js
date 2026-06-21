@@ -1,9 +1,10 @@
 /**
  * THE MD CODE - Main JavaScript Engine
+ * Handles: i18n, RTL/LTR, Forms, Tabs, Download Gate, Print, Supabase Sync, WhatsApp Alerts
  */
 
 // ============================================
-// SUPABASE
+// SUPABASE INITIALIZATION
 // ============================================
 const SUPABASE_URL = 'https://fcelaqzradnxhuupzfuf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZjZWxhcXpyYWRueGh1dXB6ZnVmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5ODM0OTMsImV4cCI6MjA5NzU1OTQ5M30.PSjR4oBM8ioU0ezyIzDl3YnE_FMOPl-giLWeYxm8oZ4';
@@ -14,13 +15,18 @@ if (typeof supabase !== 'undefined') {
 }
 
 // ============================================
-// WHATSAPP HELPER (للتواصل فقط)
+// WHATSAPP ALERT HELPER
 // ============================================
 const WhatsAppAlert = {
     PHONE: '962786595990',
     
-    sendContact(data) {
-        const msg = `*رسالة جديدة - THE MD CODE* 📩
+    send(message) {
+        const url = `https://wa.me/${this.PHONE}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    },
+    
+    contactTemplate(data) {
+        return `*رسالة جديدة - موقع THE MD CODE* 📩
 
 *الاسم:* ${data.name}
 *الإيميل:* ${data.email || '—'}
@@ -29,14 +35,13 @@ const WhatsAppAlert = {
 *الرسالة:*
 ${data.message}
 
+*اللغة:* ${data.lang === 'ar' ? 'العربية' : 'English'}
 *التاريخ:* ${new Date().toLocaleString('ar-SA')}`;
-        
-        window.open(`https://wa.me/${this.PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 };
 
 // ============================================
-// I18N
+// I18N & LANGUAGE SWITCHER
 // ============================================
 const I18N = {
     currentLang: localStorage.getItem('mdcode-lang') || 'ar',
@@ -47,9 +52,11 @@ const I18N = {
     },
 
     setupToggle() {
-        document.querySelectorAll('.lang-toggle-btn').forEach(btn => {
+        const toggles = document.querySelectorAll('.lang-toggle-btn');
+        toggles.forEach(btn => {
             btn.addEventListener('click', (e) => {
-                this.switchLanguage(e.target.dataset.lang);
+                const lang = e.target.dataset.lang;
+                this.switchLanguage(lang);
             });
         });
     },
@@ -69,8 +76,58 @@ const I18N = {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
 
-        document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang === 'ar' ? '' : 'none');
-        document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+        document.querySelectorAll('.lang-ar').forEach(el => {
+            el.style.display = lang === 'ar' ? '' : 'none';
+        });
+        document.querySelectorAll('.lang-en').forEach(el => {
+            el.style.display = lang === 'en' ? '' : 'none';
+        });
+
+        document.querySelectorAll('[data-placeholder-ar]').forEach(el => {
+            el.placeholder = lang === 'ar' ? el.dataset.placeholderAr : el.dataset.placeholderEn;
+        });
+
+        document.querySelectorAll('[data-text-ar]').forEach(el => {
+            el.textContent = lang === 'ar' ? el.dataset.textAr : el.dataset.textEn;
+        });
+
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+    },
+
+    get(key) {
+        const dict = TRANSLATIONS[this.currentLang];
+        return dict && dict[key] ? dict[key] : key;
+    }
+};
+
+const TRANSLATIONS = {
+    ar: {
+        submitSuccess: '✅ تم إرسال رسالتك بنجاح! سوف نتواصل معك في أقرب وقت. جاري فتح واتساب...',
+        submitError: '❌ حدث خطأ. يرجى المحاولة مرة أخرى.',
+        requiredField: 'هذا الحقل مطلوب',
+        invalidEmail: 'البريد الإلكتروني غير صالح',
+        invalidPhone: 'رقم الهاتف غير صالح',
+        loading: 'جاري الإرسال...',
+        gateTitle: 'الوصول المتميز',
+        gateDesc: 'قم بتسجيل الدخول للوصول إلى هذا المحتوى الحصري.',
+        gateBtn: 'تسجيل الدخول',
+        printBtn: 'طباعة',
+        close: 'إغلاق',
+        selectOption: 'اختر...'
+    },
+    en: {
+        submitSuccess: '✅ Submitted successfully! We will contact you soon. Opening WhatsApp...',
+        submitError: '❌ An error occurred. Please try again.',
+        requiredField: 'This field is required',
+        invalidEmail: 'Invalid email address',
+        invalidPhone: 'Invalid phone number',
+        loading: 'Sending...',
+        gateTitle: 'Premium Access',
+        gateDesc: 'Please log in to access this exclusive content.',
+        gateBtn: 'Log In',
+        printBtn: 'Print',
+        close: 'Close',
+        selectOption: 'Select...'
     }
 };
 
@@ -105,6 +162,7 @@ const FormHandler = {
     showFieldError(input, message) {
         const existing = input.parentElement.querySelector('.field-error');
         if (existing) existing.remove();
+
         const error = document.createElement('span');
         error.className = 'field-error';
         error.style.cssText = 'color: #e74c3c; font-size: 0.8rem; margin-top: 0.25rem; display: block;';
@@ -166,17 +224,17 @@ const FormHandler = {
             if (error) throw error;
 
             // ✅ فتح واتساب تلقائياً
-            WhatsAppAlert.sendContact({
+            const waMessage = WhatsAppAlert.contactTemplate({
                 name: name.value.trim(),
                 email: email.value.trim(),
                 phone: phone.value.trim(),
-                message: message.value.trim()
+                message: message.value.trim(),
+                lang: I18N.currentLang
             });
+            WhatsAppAlert.send(waMessage);
 
-            // ✅ رسالة نجاح واضحة
             this.showSuccess(form, '✅ تم إرسال رسالتك بنجاح! سوف نتواصل معك في أقرب وقت. جاري فتح واتساب...');
             form.reset();
-
         } catch (err) {
             console.error('Contact form error:', err);
             this.showError(form, '❌ حدث خطأ. يرجى المحاولة مرة أخرى.');
@@ -320,20 +378,25 @@ const FormHandler = {
 };
 
 // ============================================
-// TABS SYSTEM
+// TABS SYSTEM (Resources Page)
 // ============================================
 const TabSystem = {
     init() {
-        document.querySelectorAll('.tab-nav').forEach(nav => {
+        const tabNavs = document.querySelectorAll('.tab-nav');
+        tabNavs.forEach(nav => {
             const buttons = nav.querySelectorAll('.tab-btn');
             const panels = document.querySelectorAll('.tab-panel');
 
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const target = btn.dataset.tab;
+
                     buttons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    panels.forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+
+                    panels.forEach(p => {
+                        p.classList.toggle('active', p.dataset.panel === target);
+                    });
                 });
             });
         });
@@ -341,10 +404,11 @@ const TabSystem = {
 };
 
 // ============================================
-// DOWNLOAD GATE (Supabase فقط - بدون واتساب)
+// DOWNLOAD GATE (Supabase Lead Capture + HTML Page Open)
 // ============================================
 const DownloadGate = {
     COUNTRIES: [
+        // === الدول العربية ===
         { code: 'JO', name: 'الأردن', flag: '🇯🇴', dial: '+962', regex: /^7[789]\d{7}$/, len: 9 },
         { code: 'SA', name: 'السعودية', flag: '🇸🇦', dial: '+966', regex: /^5\d{8}$/, len: 9 },
         { code: 'AE', name: 'الإمارات', flag: '🇦🇪', dial: '+971', regex: /^5\d{8}$/, len: 9 },
@@ -365,9 +429,11 @@ const DownloadGate = {
         { code: 'MR', name: 'موريتانيا', flag: '🇲🇷', dial: '+222', regex: /^[234]\d{7}$/, len: 8 },
         { code: 'SO', name: 'الصومال', flag: '🇸🇴', dial: '+252', regex: /^[567]\d{7}$/, len: 8 },
         { code: 'DJ', name: 'جيبوتي', flag: '🇩🇯', dial: '+253', regex: /^[78]\d{6}$/, len: 7 },
+        // === دول الشرق الأوسط ===
         { code: 'TR', name: 'تركيا', flag: '🇹🇷', dial: '+90', regex: /^5\d{9}$/, len: 10 },
         { code: 'IR', name: 'إيران', flag: '🇮🇷', dial: '+98', regex: /^9\d{9}$/, len: 10 },
         { code: 'IL', name: 'إسرائيل', flag: '🇮🇱', dial: '+972', regex: /^5\d{8}$/, len: 9 },
+        // === الاتحاد الأوروبي ===
         { code: 'DE', name: 'ألمانيا', flag: '🇩🇪', dial: '+49', regex: /^1\d{10,11}$/, len: 11 },
         { code: 'FR', name: 'فرنسا', flag: '🇫🇷', dial: '+33', regex: /^[67]\d{8}$/, len: 9 },
         { code: 'IT', name: 'إيطاليا', flag: '🇮🇹', dial: '+39', regex: /^3\d{9,10}$/, len: 10 },
@@ -395,9 +461,11 @@ const DownloadGate = {
         { code: 'LU', name: 'لوكسمبورغ', flag: '🇱🇺', dial: '+352', regex: /^6\d{8}$/, len: 9 },
         { code: 'MT', name: 'مالطا', flag: '🇲🇹', dial: '+356', regex: /^[79]\d{7}$/, len: 8 },
         { code: 'CY', name: 'قبرص', flag: '🇨🇾', dial: '+357', regex: /^9\d{7}$/, len: 8 },
+        // === أمريكا الشمالية ===
         { code: 'US', name: 'الولايات المتحدة', flag: '🇺🇸', dial: '+1', regex: /^[2-9]\d{9}$/, len: 10 },
         { code: 'CA', name: 'كندا', flag: '🇨🇦', dial: '+1', regex: /^[2-9]\d{9}$/, len: 10 },
         { code: 'MX', name: 'المكسيك', flag: '🇲🇽', dial: '+52', regex: /^1\d{10}$/, len: 11 },
+        // === دول أخرى شائعة ===
         { code: 'GB', name: 'المملكة المتحدة', flag: '🇬🇧', dial: '+44', regex: /^7\d{9}$/, len: 10 },
         { code: 'CH', name: 'سويسرا', flag: '🇨🇭', dial: '+41', regex: /^7\d{8}$/, len: 9 },
         { code: 'NO', name: 'النرويج', flag: '🇳🇴', dial: '+47', regex: /^[49]\d{7}$/, len: 8 },
@@ -778,12 +846,13 @@ const DownloadGate = {
 
     openFile(asset) {
         const fileMap = {
-            'reception-manual': '/assets/downloads/reception-manual.pdf',
-            'financial-manual': '/assets/downloads/financial-manual.pdf',
-            'training-manual': '/assets/downloads/training-manual.pdf',
-            'assessment-templates': '/assets/downloads/assessment-templates.pdf'
+            'reception-manual': '/tools/resources/reception-manual.html',
+            'financial-manual': '/tools/resources/financial-manual.html',
+            'training-manual': '/tools/resources/training-manual.html',
+            'assessment-templates': '/tools/resources/assessment-templates.html'
         };
-        const filePath = fileMap[asset] || `/assets/downloads/${asset}.pdf`;
+
+        const filePath = fileMap[asset] || `/tools/resources/${asset}.html`;
         window.open(filePath, '_blank');
     },
 
@@ -799,7 +868,7 @@ const DownloadGate = {
 };
 
 // ============================================
-// PRINT
+// PRINT FUNCTIONALITY
 // ============================================
 const PrintSystem = {
     init() {
@@ -845,7 +914,7 @@ const PrintSystem = {
 };
 
 // ============================================
-// MOBILE NAV
+// MOBILE NAVIGATION
 // ============================================
 const MobileNav = {
     init() {
@@ -860,7 +929,7 @@ const MobileNav = {
 };
 
 // ============================================
-// ANIMATIONS
+// SMOOTH SCROLL & ANIMATIONS
 // ============================================
 const AnimationSystem = {
     init() {
@@ -886,7 +955,7 @@ const AnimationSystem = {
 };
 
 // ============================================
-// INIT
+// INITIALIZATION
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
     I18N.init();
