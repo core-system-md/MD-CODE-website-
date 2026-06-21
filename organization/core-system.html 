@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CORE System | نظام التحليل الرقمي</title>
     <meta name="description" content="CORE System - Clinic Operations and Revenues Excellence. Digital analytics for medical centers.">
-    <link rel="icon" type="image/png" href="../assets/icon-gold.png">
+    <link rel="icon" type="image/png" href="/assets/icon-gold.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,11 +22,11 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <style>
         .page-hero {
-            background-image: linear-gradient(rgba(26, 37, 54, 0.8), rgba(26, 37, 54, 0.9)), url('../assets/core-dashboard.jpeg');
+            background-image: linear-gradient(rgba(26, 37, 54, 0.8), rgba(26, 37, 54, 0.9)), url('/assets/core-dashboard.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -38,23 +38,23 @@
 
     <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
         <div class="container-narrow flex items-center justify-between h-20">
-            <a href="../index.html" class="flex items-center gap-3">
-                <img src="../assets/logo-teal.png" alt="THE MD CODE" class="logo-nav">
+            <a href="/index.html" class="flex items-center gap-3">
+                <img src="/assets/logo-teal.png" alt="THE MD CODE" class="logo-nav">
             </a>
             
             <div class="hidden md:flex items-center gap-8">
-                <a href="../index.html" class="nav-link lang-ar">الرئيسية</a>
-                <a href="../index.html" class="nav-link lang-en" style="display:none">Home</a>
-                <a href="md-code.html" class="nav-link">The MD Code</a>
-                <a href="core-system.html" class="nav-link text-deep-teal font-bold">CORE System</a>
-                <a href="../tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
-                <a href="../tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
-                <a href="../tools/resources.html" class="nav-link lang-ar">الموارد</a>
-                <a href="../tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
-                <a href="../corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
-                <a href="../corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
-                <a href="../contact.html" class="nav-link lang-ar">تواصل</a>
-                <a href="../contact.html" class="nav-link lang-en" style="display:none">Contact</a>
+                <a href="/index.html" class="nav-link lang-ar">الرئيسية</a>
+                <a href="/index.html" class="nav-link lang-en" style="display:none">Home</a>
+                <a href="/organization/md-code.html" class="nav-link">The MD Code</a>
+                <a href="/organization/core-system.html" class="nav-link text-deep-teal font-bold">CORE System</a>
+                <a href="/tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
+                <a href="/tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
+                <a href="/tools/resources.html" class="nav-link lang-ar">الموارد</a>
+                <a href="/tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
+                <a href="/corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
+                <a href="/corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
+                <a href="/contact.html" class="nav-link lang-ar">تواصل</a>
+                <a href="/contact.html" class="nav-link lang-en" style="display:none">Contact</a>
             </div>
             
             <div class="flex items-center gap-4">
@@ -70,18 +70,18 @@
         
         <div id="mobile-nav-menu" class="hidden md:hidden border-t border-platinum/50 bg-off-white/95 backdrop-blur-xl">
             <div class="container-narrow py-4 flex flex-col gap-3">
-                <a href="../index.html" class="nav-link lang-ar">الرئيسية</a>
-                <a href="../index.html" class="nav-link lang-en" style="display:none">Home</a>
-                <a href="md-code.html" class="nav-link">The MD Code</a>
-                <a href="core-system.html" class="nav-link">CORE System</a>
-                <a href="../tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
-                <a href="../tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
-                <a href="../tools/resources.html" class="nav-link lang-ar">الموارد</a>
-                <a href="../tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
-                <a href="../corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
-                <a href="../corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
-                <a href="../contact.html" class="nav-link lang-ar">تواصل</a>
-                <a href="../contact.html" class="nav-link lang-en" style="display:none">Contact</a>
+                <a href="/index.html" class="nav-link lang-ar">الرئيسية</a>
+                <a href="/index.html" class="nav-link lang-en" style="display:none">Home</a>
+                <a href="/organization/md-code.html" class="nav-link">The MD Code</a>
+                <a href="/organization/core-system.html" class="nav-link">CORE System</a>
+                <a href="/tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
+                <a href="/tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
+                <a href="/tools/resources.html" class="nav-link lang-ar">الموارد</a>
+                <a href="/tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
+                <a href="/corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
+                <a href="/corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
+                <a href="/contact.html" class="nav-link lang-ar">تواصل</a>
+                <a href="/contact.html" class="nav-link lang-en" style="display:none">Contact</a>
             </div>
         </div>
     </nav>
@@ -140,7 +140,7 @@
                     </ul>
                 </div>
                 <div class="order-1 md:order-2">
-                    <img src="../assets/core-dashboard.jpeg" alt="CORE Dashboard" class="rounded-2xl shadow-lg w-full">
+                    <img src="/assets/core-dashboard.jpeg" alt="CORE Dashboard" class="rounded-2xl shadow-lg w-full">
                 </div>
             </div>
 
@@ -153,7 +153,7 @@
                     <span class="lang-ar">اكتشف كيف يمكن لنظام CORE System أن يحول بيانات عيادتك إلى قرارات استراتيجية دقيقة.</span>
                     <span class="lang-en" style="display:none">Discover how CORE System can transform your clinic's data into precise strategic decisions.</span>
                 </p>
-                <a href="../contact.html" class="btn-primary text-lg px-8 py-4">
+                <a href="/contact.html" class="btn-primary text-lg px-8 py-4">
                     <span class="lang-ar">طلب عرض توضيحي</span>
                     <span class="lang-en" style="display:none">Request a Demo</span>
                 </a>
@@ -165,7 +165,7 @@
         <div class="container-narrow">
             <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <img src="../assets/logo-gold.png" alt="THE MD CODE" class="footer-logo mb-6">
+                    <img src="/assets/logo-gold.png" alt="THE MD CODE" class="footer-logo mb-6">
                     <p class="text-white/70 text-sm leading-relaxed mb-6">
                         <span class="lang-ar">إن تطبيق هذه الأدلة والبروتوكولات يكتمل بربط الأداء البشري الاستشاري بالرصد الرقمي الفوري لنظام CORE System وبرنامج The MD Code لحوكمة المنشأة وتحقيق استدامة النمو المالي القائم على الأرقام والأخلاقيات المهنية.</span>
                         <span class="lang-en" style="display:none">The execution of these operational manuals is fully realized when human consultative performance is synchronized with real-time digital tracking. CORE System and The MD Code merge behavioral transformation with precision metrics to secure healthcare center growth under absolute professional integrity.</span>
@@ -175,14 +175,14 @@
                     <h4 class="font-bold text-white mb-6 lang-ar">روابط سريعة</h4>
                     <h4 class="font-bold text-white mb-6 lang-en" style="display:none">Quick Links</h4>
                     <div class="flex flex-col gap-3">
-                        <a href="md-code.html">The MD Code</a>
-                        <a href="core-system.html">CORE System</a>
-                        <a href="../tools/assessments.html" class="lang-ar">التقييمات</a>
-                        <a href="../tools/assessments.html" class="lang-en" style="display:none">Assessments</a>
-                        <a href="../tools/resources.html" class="lang-ar">الموارد</a>
-                        <a href="../tools/resources.html" class="lang-en" style="display:none">Resources</a>
-                        <a href="../corporate/about.html" class="lang-ar">عن المؤسس</a>
-                        <a href="../corporate/about.html" class="lang-en" style="display:none">About</a>
+                        <a href="/organization/md-code.html">The MD Code</a>
+                        <a href="/organization/core-system.html">CORE System</a>
+                        <a href="/tools/assessments.html" class="lang-ar">التقييمات</a>
+                        <a href="/tools/assessments.html" class="lang-en" style="display:none">Assessments</a>
+                        <a href="/tools/resources.html" class="lang-ar">الموارد</a>
+                        <a href="/tools/resources.html" class="lang-en" style="display:none">Resources</a>
+                        <a href="/corporate/about.html" class="lang-ar">عن المؤسس</a>
+                        <a href="/corporate/about.html" class="lang-en" style="display:none">About</a>
                     </div>
                 </div>
                 <div>
@@ -216,6 +216,6 @@
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
