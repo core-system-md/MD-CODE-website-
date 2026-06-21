@@ -30,6 +30,8 @@
             background-size: cover;
             background-position: center;
         }
+        .logo-nav { max-height: 40px; width: auto; object-fit: contain; }
+        .footer-logo { max-height: 48px; width: auto; object-fit: contain; }
     </style>
 </head>
 <body class="bg-off-white text-slate-navy">
@@ -37,7 +39,7 @@
     <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
         <div class="container-narrow flex items-center justify-between h-20">
             <a href="../index.html" class="flex items-center gap-3">
-                <img src="../assets/logo-teal.png" alt="THE MD CODE" class="h-10 w-auto">
+                <img src="../assets/logo-teal.png" alt="THE MD CODE" class="logo-nav">
             </a>
             
             <div class="hidden md:flex items-center gap-8">
@@ -203,7 +205,7 @@
         <div class="container-narrow">
             <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <img src="../assets/logo-gold.png" alt="THE MD CODE" class="h-12 w-auto mb-6">
+                    <img src="../assets/logo-gold.png" alt="THE MD CODE" class="footer-logo mb-6">
                     <p class="text-white/70 text-sm leading-relaxed mb-6">
                         <span class="lang-ar">إن تطبيق هذه الأدلة والبروتوكولات يكتمل بربط الأداء البشري الاستشاري بالرصد الرقمي الفوري لنظام CORE System وبرنامج The MD Code لحوكمة المنشأة وتحقيق استدامة النمو المالي القائم على الأرقام والأخلاقيات المهنية.</span>
                         <span class="lang-en" style="display:none">The execution of these operational manuals is fully realized when human consultative performance is synchronized with real-time digital tracking. CORE System and The MD Code merge behavioral transformation with precision metrics to secure healthcare center growth under absolute professional integrity.</span>
