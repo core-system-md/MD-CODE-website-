@@ -6,85 +6,326 @@
     <title>دليل الـ 30 يوماً لمنع تسرب المرضى | THE MD CODE</title>
     <link rel="icon" type="image/png" href="/assets/icon-gold.png">
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; background: #F9F9F9; color: #1A2536; line-height: 1.8; padding: 0; margin: 0; }
-        .container { max-width: 850px; margin: 0 auto; padding: 2rem; }
-        .hero { background: linear-gradient(135deg, #1A2536, #005B5C); color: white; padding: 3rem 2rem; text-align: center; }
-        .hero h1 { margin: 0; font-size: 1.8rem; }
-        .hero p { margin: 0.5rem 0 0; opacity: 0.9; }
-        h2 { color: #005B5C; font-size: 1.4rem; margin-top: 2.5rem; border-bottom: 2px solid #C5A059; padding-bottom: 0.5rem; }
-        p { font-size: 15px; margin-bottom: 1rem; }
-        ul { list-style: none; padding: 0; }
-        li { position: relative; padding-right: 1.5rem; margin-bottom: 0.75rem; font-size: 15px; }
-        li::before { content: "•"; position: absolute; right: 0; color: #C5A059; font-size: 1.2rem; }
-        blockquote { background: #F0FDF4; border-right: 4px solid #005B5C; padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; font-style: italic; }
-        .warning { background: #FEF3C7; border-right: 4px solid #C5A059; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-size: 14px; color: #92400E; }
-        .printable { background: #FFF; border: 2px dashed #C5A059; border-radius: 12px; padding: 2rem; margin-top: 3rem; }
-        .printable h3 { text-align: center; margin-bottom: 1.5rem; }
-        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 14px; }
-        th, td { border: 1px solid #CBD5E1; padding: 10px; text-align: right; }
-        th { background: #1A2536; color: white; }
-        tr:nth-child(even) { background: #F8FAFC; }
-        .print-btn { position: fixed; bottom: 2rem; left: 2rem; background: linear-gradient(135deg, #C5A059, #B08D4E); color: white; padding: 1rem 1.5rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; }
-        footer { background: #1A2536; color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
-        footer a { color: #C5A059; text-decoration: none; }
-        @media print { .print-btn, footer { display: none !important; } .printable { border: 1px solid #000; } }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #F9F9F9;
+            color: #1A2536;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0,0,0,0.08);
+        }
+        .header {
+            background: linear-gradient(135deg, #1A2536 0%, #005B5C 100%);
+            color: white;
+            padding: 3rem 2rem 2.5rem;
+            text-align: center;
+            position: relative;
+        }
+        .header .tag {
+            display: inline-block;
+            background: rgba(197,160,89,0.2);
+            color: #C5A059;
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .content {
+            padding: 2.5rem 2rem;
+        }
+        .warning-box {
+            background: #FEF3C7;
+            border-right: 4px solid #C5A059;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #92400E;
+            line-height: 1.7;
+        }
+        h2 {
+            color: #005B5C;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 2px solid #C5A059;
+            line-height: 1.4;
+        }
+        h3 {
+            color: #1A2536;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 1.8rem 0 0.8rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            color: #334155;
+            line-height: 1.9;
+        }
+        ul {
+            list-style: none;
+            margin: 1rem 0 1.5rem;
+            padding: 0;
+        }
+        li {
+            position: relative;
+            padding-right: 1.8rem;
+            margin-bottom: 0.9rem;
+            color: #334155;
+            line-height: 1.8;
+        }
+        li::before {
+            content: "●";
+            position: absolute;
+            right: 0;
+            top: 0.15rem;
+            color: #C5A059;
+            font-size: 0.7rem;
+        }
+        li strong {
+            color: #005B5C;
+        }
+        blockquote {
+            background: #F0FDF4;
+            border-right: 4px solid #005B5C;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #1A2536;
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+        .printable-section {
+            background: #FAFAFA;
+            border: 2px dashed #C5A059;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        .printable-section h3 {
+            text-align: center;
+            color: #1A2536;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+        .resource-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        .resource-table th, .resource-table td {
+            border: 1px solid #CBD5E1;
+            padding: 0.8rem;
+            text-align: right;
+            vertical-align: top;
+        }
+        .resource-table th {
+            background: #1A2536;
+            color: white;
+            font-weight: 600;
+        }
+        .resource-table tr:nth-child(even) {
+            background: #F8FAFC;
+        }
+        .resource-table tr:hover {
+            background: #F1F5F9;
+        }
+        .footer {
+            background: #1A2536;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .footer a {
+            color: #C5A059;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        .footer p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+            text-align: center;
+        }
+        .print-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            background: linear-gradient(135deg, #C5A059, #B08D4E);
+            color: white;
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(197,160,89,0.4);
+            z-index: 1000;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(197,160,89,0.5);
+        }
+        .nav-back {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(26,37,54,0.85);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .nav-back:hover {
+            background: rgba(26,37,54,0.95);
+        }
+
+        @media (max-width: 768px) {
+            .content { padding: 1.5rem 1rem; }
+            .header { padding: 2rem 1rem 1.5rem; }
+            .header h1 { font-size: 1.4rem; }
+            .print-btn { bottom: 1rem; left: 1rem; padding: 0.75rem 1.2rem; font-size: 0.9rem; }
+            .resource-table { font-size: 0.8rem; }
+            .resource-table th, .resource-table td { padding: 0.5rem; }
+        }
+
+        @media print {
+            .print-btn, .nav-back { display: none !important; }
+            .page { box-shadow: none; max-width: 100%; }
+            body { background: white; }
+            .printable-section {
+                border: 1px solid #999;
+                page-break-before: always;
+                margin-top: 0;
+            }
+            .content { padding: 1.5rem; }
+            h2 { page-break-after: avoid; }
+            p, li { orphans: 3; widows: 3; }
+            .resource-table { page-break-inside: auto; }
+            .resource-table tr { page-break-inside: avoid; }
+            .footer { background: #1A2536 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
     </style>
 </head>
 <body>
 
-<button onclick="window.print()" class="print-btn">🖨️ طباعة / حفظ PDF</button>
+<a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
+<button onclick="window.print()" class="print-btn no-print">🖨️ طباعة / PDF</button>
 
-<div class="hero">
-    <div style="font-size: 14px; opacity: 0.8; margin-bottom: 0.5rem;">دليل تطبيقي لفرق الاستقبال</div>
-    <h1>دليل الـ 30 يوماً</h1>
-    <p>لمنع تسرب المرضى في المبيعات والمتابعة</p>
+<div class="page">
+    <div class="header">
+        <div class="tag">دليل تطبيقي لفرق الاستقبال</div>
+        <h1>دليل الـ 30 يوماً</h1>
+        <p>لمنع تسرب المرضى في المبيعات والمتابعة — من الاستفسار إلى الحجز المؤكد</p>
+    </div>
+
+    <div class="content">
+        <div class="warning-box">
+            <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن خطي.
+        </div>
+
+        <h2>1. طريقة الرد الاحترافية على الاتصالات الواردة</h2>
+        <p>الهدف الأساسي هو رفع نسبة تحويل المكالمات الهاتفية واستفسارات المنصات إلى مواعيد حقيقية داخل العيادة. يُمنع منعاً باتاً إعطاء سعر مجرد أو جاف للمريض دون ربطه الفوري بالميزات والخدمات والرعاية التي سيتلقاها.</p>
+
+        <h2>2. الرد على أسئلة السعر (تمرين مربع القيمة)</h2>
+        <p>تحويل مقارنة السعر المباشرة إلى محادثة واضحة عن القيمة والشفافية الطبية لمنع خسارة المريض. الصيغة المعتمدة باللهجة البيضاء:</p>
+        <blockquote>"نفهمك تماماً. التكلفة هي (X) وتشمل الميزات والمتابعة لضمان أفضل نتيجة حسب خطة الدكتور، والفرق هنا أنك لن تدفع مرتين لأننا نعمل بخطة مكتوبة واضحة من اليوم الأول. متى يناسبك نثبت الموعد؟"</blockquote>
+
+        <h2>3. حجز الموعد باستخدام "الخيار البديل"</h2>
+        <p>قيادة المحادثة بمهنية وتوجيه المريض نحو اختيار موعد محدد، مع تجنب تركه لحالة التأجيل المفتوح أو الرفض. عندما يعتذر المريض عن موعد، اعرضي عليه خيارين فوراً:</p>
+        <blockquote>"عندنا موعد متاح بكرة الساعة 2 أو الخميس الساعة 11.. شو الأنسب لجدولك؟"</blockquote>
+
+        <h2>4. نظام المتابعة اليومية لمن غادر دون حجز (Follow-up)</h2>
+        <p>سد الثغرات الإدارية اليومية لمنع تسرب الزوار. يلتزم الاستقبال بالاتصال بالمريض خلال نافذة 24 ساعة من زيارته الأولى:</p>
+        <blockquote>"مرحباً [اسم المريض]، فقط أطمئن عليك بعد أمس — هل لديك أي استفسار إضافي؟ موعدك التالي ينتظرك."</blockquote>
+
+        <h2>5. تسجيل حوكمة البيانات على نظام CORE</h2>
+        <p>تتبع العمليات الأمامية أسبوعياً وقياس معدل تحويل الاستفسارات إلى حجوزات فعلية. يجب تسجيل الرد السلوكي للمريض بدقة وسبب عدم حجزه فوراً لتفعيل التنبيهات المؤتمتة.</p>
+
+        <div class="printable-section">
+            <h3>جدول المرجع السريع والتدقيق اليومي — للطباعة</h3>
+            <table class="resource-table">
+                <thead>
+                    <tr>
+                        <th style="width: 22%;">الموقف السلوكي</th>
+                        <th style="width: 48%;">الصيغة المعتمدة (باللهجة البيضاء)</th>
+                        <th style="width: 30%;">النتيجة المستهدفة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>يسأل عن السعر فقط</strong></td>
+                        <td>"التكلفة تشمل المتابعة والضمان لضمان النتيجة.. متى يناسبك نثبت الموعد؟"</td>
+                        <td>حجز موعد فوري وعزل السعر كعائق وحيد.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>يقول السعر غالي عن السوق</strong></td>
+                        <td>"الفرق أنك لن تدفع مرتين، نعمل بخطة مكتوبة واضحة من أول يوم."</td>
+                        <td>إثبات القيمة والشفافية الطبية بدلاً من المنافسة السعرية.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>يتردد أو يعتذر عن موعد</strong></td>
+                        <td>"عندنا موعد بكرة الساعة 2 أو الخميس الساعة 11، شو الأنسب إلك؟"</td>
+                        <td>تأكيد الحجز وتجنب التأجيل المفتوح.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>غادر دون حجز خطة المتابعة</strong></td>
+                        <td>"مرحباً (الاسم)، فقط أطمئن عليك، هل لديك أي استفسار؟ موعدك ينتظرك."</td>
+                        <td>مكالمة متابعة خلال 24 ساعة لتحويل الاستفسار إلى حجز.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>يرفض الخطة لأسباب مالية</strong></td>
+                        <td>"نبدأ بالجلسة الأساسية اليوم، ونضع جدولاً لباقي الخطوات حسب راحتك."</td>
+                        <td>تقديم حل مرن مرحلي بدلاً من الرفض الكامل.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.8rem; color: #64748B; text-align: center; margin-top: 1rem; font-style: italic;">
+                * الحد الأدنى: التزام كامل بالصيغ الميدانية وتطبيق دقيقتين محاكاة (Role Play) جماعية قبل بدء الدوام اليومي.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p style="font-size: 1rem; margin-bottom: 0.5rem;">
+            <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> |
+            <a href="tel:+962786595990">+962 78 659 5990</a> |
+            <a href="https://wa.me/962786595990">واتساب</a>
+        </p>
+        <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
+    </div>
 </div>
-
-<div class="container">
-
-    <div class="warning">
-        <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن.
-    </div>
-
-    <h2>1. طريقة الرد الاحترافية على الاتصالات</h2>
-    <p>الهدف: رفع نسبة تحويل الاستفسارات إلى مواعيد حقيقية. يُمنع إعطاء سعر مجرد دون ربطه بالقيمة.</p>
-
-    <h2>2. الرد على أسئلة السعر</h2>
-    <blockquote>"نفهمك تماماً. التكلفة هي (X) وتشمل الميزات والمتابعة لضمان أفضل نتيجة. والفرق هنا أنك لن تدفع مرتين لأننا نعمل بخطة مكتوبة واضحة من اليوم الأول. متى يناسبك نثبت الموعد؟"</blockquote>
-
-    <h2>3. حجز الموعد باستخدام "الخيار البديل"</h2>
-    <p>لا تسأل "متى يناسبك؟" — قدّم خيارين محددين:</p>
-    <blockquote>"عندنا موعد متاح بكرة الساعة 2 أو الخميس الساعة 11.. شو الأنسب لجدولك؟"</blockquote>
-
-    <h2>4. نظام المتابعة اليومية</h2>
-    <p>اتصل بالمريض خلال 24 ساعة من زيارته الأولى:</p>
-    <blockquote>"مرحباً [اسم المريض]، فقط أطمئن عليك بعد أمس — هل لديك أي استفسار إضافي؟ موعدك التالي ينتظرك."</blockquote>
-
-    <h2>5. تسجيل البيانات على نظام CORE</h2>
-    <p>سجّل سبب كل تسرب: تردد مالي، تردد زمني، استشارة عائلة، أو مقارنة مع مركز آخر.</p>
-
-    <div class="printable">
-        <h3>جدول المرجع السريع — للطباعة</h3>
-        <table>
-            <tr><th>الموقف</th><th>الصيغة المعتمدة</th><th>النتيجة</th></tr>
-            <tr><td>يسأل عن السعر فقط</td><td>"التكلفة تشمل المتابعة والضمان.. متى يناسبك؟"</td><td>حجز موعد فوري</td></tr>
-            <tr><td>يقول السعر غالي</td><td>"الفرق أنك لن تدفع مرتين، نعمل بخطة مكتوبة."</td><td>إثبات القيمة</td></tr>
-            <tr><td>يتردد أو يعتذر</td><td>"بكرة الساعة 2 أو الخميس الساعة 11، شو الأنسب؟"</td><td>تأكيد الحجز</td></tr>
-            <tr><td>غادر دون حجز</td><td>"مرحباً (الاسم)، أطمئن عليك، هل لديك استفسار؟"</td><td>مكالمة خلال 24 ساعة</td></tr>
-            <tr><td>رفض لأسباب مالية</td><td>"نبدأ بالجلسة الأساسية اليوم ونضع جدولاً للباقي."</td><td>حل مرن مرحلي</td></tr>
-        </table>
-    </div>
-
-</div>
-
-<footer>
-    <div style="font-size: 14px; margin-bottom: 1rem;">
-        <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> | 
-        <a href="tel:+962786595990">+962 78 659 5990</a> | 
-        <a href="https://wa.me/962786595990">واتساب</a>
-    </div>
-    <div style="font-size: 12px; opacity: 0.6;">© 2026 THE MD CODE. جميع الحقوق محفوظة.</div>
-</footer>
 
 </body>
 </html>
