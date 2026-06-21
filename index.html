@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE MD CODE | شيفرة العيادة</title>
-    <meta name="description" content="Re-engineering Operational and Financial Excellence for Medical Centers. The MD Code and CORE System.">
-    <link rel="icon" type="image/png" href="assets/icon-gold.png">
+    <title>THE MD CODE | الهندسة التشغيلية</title>
+    <meta name="description" content="Re-engineering Operational and Financial Excellence for Medical Centers. The MD Code and CORE system.">
+    <link rel="icon" type="image/png" href="/assets/icon-gold.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -22,11 +22,11 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
     <style>
         .hero-bg {
-            background-image: linear-gradient(rgba(26, 37, 54, 0.75), rgba(26, 37, 54, 0.85)), url('assets/main-hero.jpeg');
+            background-image: linear-gradient(rgba(26, 37, 54, 0.75), rgba(26, 37, 54, 0.85)), url('/assets/main-hero.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -41,31 +41,31 @@
 
     <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
         <div class="container-narrow flex items-center justify-between h-20">
-            <a href="./index.html" class="flex items-center gap-3">
-                <img src="assets/logo-teal.png" alt="THE MD CODE" class="logo-nav">
+            <a href="/index.html" class="flex items-center gap-3">
+                <img src="/assets/logo-teal.png" alt="THE MD CODE" class="logo-nav">
             </a>
             
             <div class="hidden md:flex items-center gap-8">
-                <a href="./index.html" class="nav-link text-deep-teal font-bold lang-ar">الرئيسية</a>
-                <a href="./index.html" class="nav-link text-deep-teal font-bold lang-en" style="display:none">Home</a>
+                <a href="/index.html" class="nav-link text-deep-teal font-bold lang-ar">الرئيسية</a>
+                <a href="/index.html" class="nav-link text-deep-teal font-bold lang-en" style="display:none">Home</a>
                 
-                <a href="./organization/md-code.html" class="nav-link lang-ar">The MD Code</a>
-                <a href="./organization/md-code.html" class="nav-link lang-en" style="display:none">The MD Code</a>
+                <a href="/organization/md-code.html" class="nav-link lang-ar">The MD Code</a>
+                <a href="/organization/md-code.html" class="nav-link lang-en" style="display:none">The MD Code</a>
                 
-                <a href="./organization/core-system.html" class="nav-link lang-ar">CORE System</a>
-                <a href="./organization/core-system.html" class="nav-link lang-en" style="display:none">CORE System</a>
+                <a href="/organization/core-system.html" class="nav-link lang-ar">CORE System</a>
+                <a href="/organization/core-system.html" class="nav-link lang-en" style="display:none">CORE System</a>
                 
-                <a href="./tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
-                <a href="./tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
+                <a href="/tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
+                <a href="/tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
                 
-                <a href="./tools/resources.html" class="nav-link lang-ar">الموارد</a>
-                <a href="./tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
+                <a href="/tools/resources.html" class="nav-link lang-ar">الموارد</a>
+                <a href="/tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
                 
-                <a href="./corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
-                <a href="./corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
+                <a href="/corporate/about.html" class="nav-link lang-ar">من نحن</a>
+                <a href="/corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
                 
-                <a href="./contact.html" class="nav-link lang-ar">تواصل</a>
-                <a href="./contact.html" class="nav-link lang-en" style="display:none">Contact</a>
+                <a href="/contact.html" class="nav-link lang-ar">تواصل</a>
+                <a href="/contact.html" class="nav-link lang-en" style="display:none">Contact</a>
             </div>
             
             <div class="flex items-center gap-4">
@@ -81,18 +81,18 @@
         
         <div id="mobile-nav-menu" class="hidden md:hidden border-t border-platinum/50 bg-off-white/95 backdrop-blur-xl">
             <div class="container-narrow py-4 flex flex-col gap-3">
-                <a href="./index.html" class="nav-link lang-ar">الرئيسية</a>
-                <a href="./index.html" class="nav-link lang-en" style="display:none">Home</a>
-                <a href="./organization/md-code.html" class="nav-link">The MD Code</a>
-                <a href="./organization/core-system.html" class="nav-link">CORE System</a>
-                <a href="./tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
-                <a href="./tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
-                <a href="./tools/resources.html" class="nav-link lang-ar">الموارد</a>
-                <a href="./tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
-                <a href="./corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
-                <a href="./corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
-                <a href="./contact.html" class="nav-link lang-ar">تواصل</a>
-                <a href="./contact.html" class="nav-link lang-en" style="display:none">Contact</a>
+                <a href="/index.html" class="nav-link lang-ar">الرئيسية</a>
+                <a href="/index.html" class="nav-link lang-en" style="display:none">Home</a>
+                <a href="/organization/md-code.html" class="nav-link">The MD Code</a>
+                <a href="/organization/core-system.html" class="nav-link">CORE System</a>
+                <a href="/tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
+                <a href="/tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
+                <a href="/tools/resources.html" class="nav-link lang-ar">الموارد</a>
+                <a href="/tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
+                <a href="/corporate/about.html" class="nav-link lang-ar">من نحن</a>
+                <a href="/corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
+                <a href="/contact.html" class="nav-link lang-ar">تواصل</a>
+                <a href="/contact.html" class="nav-link lang-en" style="display:none">Contact</a>
             </div>
         </div>
     </nav>
@@ -101,7 +101,7 @@
         <div class="container-narrow relative z-10">
             <div class="max-w-4xl mx-auto text-center">
                 <div class="mb-6 flex justify-center">
-                    <img src="assets/logo-gold.png" alt="THE MD CODE" class="logo-img">
+                    <img src="/assets/logo-gold.png" alt="THE MD CODE" class="logo-img">
                 </div>
                 
                 <h1 class="heading-hero mb-6 text-white">
@@ -114,7 +114,7 @@
                     <span class="lang-en" style="display:none">An integrated consulting and technical framework designed to empower medical clinics to maximize Patient Acceptance Rates and eliminate Patient Leakage through advanced behavioral and digital analytics.</span>
                 </p>
                 
-                <a href="./contact.html" class="btn-primary text-lg px-8 py-4" style="background:#C5A059; border-color:#C5A059;">
+                <a href="/contact.html" class="btn-primary text-lg px-8 py-4" style="background:#C5A059; border-color:#C5A059;">
                     <span class="lang-ar">طلب حجز جلسة استشارية تشخيصية</span>
                     <span class="lang-en" style="display:none">Request a Diagnostic Consultation Session</span>
                 </a>
@@ -126,11 +126,11 @@
         <div class="container-narrow">
             <div class="text-center mb-16">
                 <h2 class="heading-section mb-4">
-                    <span class="lang-ar">منظومة التكامل الاستشاري والتقني</span>
+                    <span class="lang-ar">المصفوفة التآزرية</span>
                     <span class="lang-en" style="display:none">The Synergy Matrix</span>
                 </h2>
                 <p class="body-large max-w-2xl mx-auto">
-                    <span class="lang-ar">حلول متكاملة تجمع بين الاستشارة البشرية المتقدمة والتحليل الرقمي الدقيق</span>
+                    <span class="lang-ar">حلول متكاملة تجمع بين الاستشارات البشرية المتقدمة والتحليلات الرقمية الدقيقة</span>
                     <span class="lang-en" style="display:none">Integrated solutions merging advanced human consultancy with precision digital analytics</span>
                 </p>
             </div>
@@ -145,13 +145,13 @@
                     </div>
                     
                     <p class="body-large mb-8 flex-grow">
-                        <span class="lang-ar">المنهج الاستشاري والتدريبي المتقدم لتطوير الأداء السلوكي والتواصلي للكادر الطبي والإداري. يركز على إعادة تنظيم مسارات العمل، وتطبيق بروتوكولات واضحة تضمن تحسين تجربة المريض ورفع كفاءة العيادة.</span>
+                        <span class="lang-ar">الاستشارات المتقدمة والتدريب المكثف لتطوير الأداء السلوكي والتواصلي للكوادر الطبية والإدارية. يركز على إعادة هيكلة العمليات التشغيلية وتطبيق بروتوكولات واضحة تعزز رحلة المريض والكفاءة السريرية.</span>
                         <span class="lang-en" style="display:none">The advanced consulting and training methodology to develop the behavioral and communicative performance of clinical and administrative staff. It focuses on re-organizing workflows and applying clear protocols that enhance the patient journey and clinic efficiency.</span>
                     </p>
                     
-                    <a href="./organization/md-code.html" class="btn-outline self-start">
-                        <span class="lang-ar">استكشف المنهجية الاستشارية المتقدمة ←</span>
-                        <span class="lang-en" style="display:none">Explore Advanced Consulting Methodology ←</span>
+                    <a href="/organization/md-code.html" class="btn-outline self-start">
+                        <span class="lang-ar">استكشف المنهجية الاستشارية المتقدمة →</span>
+                        <span class="lang-en" style="display:none">Explore Advanced Consulting Methodology →</span>
                     </a>
                 </div>
                 
@@ -164,13 +164,13 @@
                     </div>
                     
                     <p class="body-large mb-8 flex-grow">
-                        <span class="lang-ar">النظام التقني والبرمجي المتخصص في إدارة البيانات وتحليل أداء العمليات والعائدات المالية للعيادات (Clinic Operations and Revenues Excellence). يوفر النظام أدوات رصد فورية لتتبع كفاءة العمل وتحديد ثغرات الهدر المالي.</span>
+                        <span class="lang-ar">النظام التقني والبرمجي المتخصص لإدارة البيانات والتتبع التحليلي لعمليات العيادات والإيرادات (Clinic Operations and Revenues Excellence). يوفر أدوات تتبع فورية لمراجعة الكفاءة وتحديد نقاط التسرب المالي.</span>
                         <span class="lang-en" style="display:none">The specialized technical and software system for data management and analytical performance tracking of clinic operations and revenues (Clinic Operations and Revenues Excellence). The system provides real-time tracking tools to audit efficiency and identify financial leakage points.</span>
                     </p>
                     
-                    <a href="./organization/core-system.html" class="btn-outline self-start">
-                        <span class="lang-ar">استكشف منصة التحليل الرقمي الحصري ←</span>
-                        <span class="lang-en" style="display:none">Explore Exclusive Digital Analytics ←</span>
+                    <a href="/organization/core-system.html" class="btn-outline self-start">
+                        <span class="lang-ar">استكشف التحليلات الرقمية الحصرية →</span>
+                        <span class="lang-en" style="display:none">Explore Exclusive Digital Analytics →</span>
                     </a>
                 </div>
             </div>
@@ -212,14 +212,14 @@
                 
                 <div class="relative z-10">
                     <h2 class="heading-section mb-6">
-                        <span class="lang-ar">ابدأ رحلة التحول التشغيلي والمالي لعيادتك</span>
+                        <span class="lang-ar">ابدأ تحول عيادتك التشغيلي والمالي معنا</span>
                         <span class="lang-en" style="display:none">Begin Your Clinic's Operational and Financial Transformation</span>
                     </h2>
                     <p class="body-large max-w-2xl mx-auto mb-8">
-                        <span class="lang-ar">احجز جلسة استشارية تشخيصية مجانية لتحليل واقع عيادتك وتحديد نقاط القوة والضعف في منظومتك التشغيلية والمالية.</span>
+                        <span class="lang-ar">احجز جلسة استشارية تشخيصية أو تواصل معنا للاستفسارات. نحن نقدم حلولاً مخصصة لكل عيادة بناءً على تحليلها الفريد والسلوكي المتقدم.</span>
                         <span class="lang-en" style="display:none">Book a complimentary diagnostic consultation to analyze your clinic's current state and identify operational and financial strengths and weaknesses.</span>
                     </p>
-                    <a href="./contact.html" class="btn-primary text-lg px-8 py-4">
+                    <a href="/contact.html" class="btn-primary text-lg px-8 py-4">
                         <span class="lang-ar">طلب حجز جلسة استشارية تشخيصية</span>
                         <span class="lang-en" style="display:none">Request a Diagnostic Consultation Session</span>
                     </a>
@@ -232,10 +232,10 @@
         <div class="container-narrow">
             <div class="grid md:grid-cols-3 gap-12 mb-12">
                 <div>
-                    <img src="assets/logo-gold.png" alt="THE MD CODE" class="footer-logo mb-6">
+                    <img src="/assets/logo-gold.png" alt="THE MD CODE" class="footer-logo mb-6">
                     <p class="text-white/70 text-sm leading-relaxed mb-6">
-                        <span class="lang-ar">إن تطبيق هذه الأدلة والبروتوكولات يكتمل بربط الأداء البشري الاستشاري بالرصد الرقمي الفوري لنظام CORE System وبرنامج The MD Code لحوكمة المنشأة وتحقيق استدامة النمو المالي القائم على الأرقام والأخلاقيات المهنية.</span>
-                        <span class="lang-en" style="display:none">The execution of these operational manuals is fully realized when human consultative performance is synchronized with real-time digital tracking. CORE System and The MD Code merge behavioral transformation with precision metrics to secure healthcare center growth under absolute professional integrity.</span>
+                        <span class="lang-ar">تنفيذ هذه الكتيبات التشغيلية يتحقق بالكامل عندما يتم مزامنة الأداء الاستشاري البشري مع التتبع الرقمي الفوري. يندمج نظام CORE و The MD Code بين التحول السلوكي والمقاييس الدقيقة لضمان نمو المركز الصحي بأعلى معايير المهنية.</span>
+                        <span class="lang-en" style="display:none">The execution of these operational manuals is fully realized when human consultative performance is synchronized with real-time digital tracking. CORE system and The MD Code merge behavioral transformation with precision metrics to secure healthcare center growth under absolute professional integrity.</span>
                     </p>
                 </div>
                 
@@ -243,14 +243,14 @@
                     <h4 class="font-bold text-white mb-6 lang-ar">روابط سريعة</h4>
                     <h4 class="font-bold text-white mb-6 lang-en" style="display:none">Quick Links</h4>
                     <div class="flex flex-col gap-3">
-                        <a href="./organization/md-code.html">The MD Code</a>
-                        <a href="./organization/core-system.html">CORE System</a>
-                        <a href="./tools/assessments.html" class="lang-ar">التقييمات</a>
-                        <a href="./tools/assessments.html" class="lang-en" style="display:none">Assessments</a>
-                        <a href="./tools/resources.html" class="lang-ar">الموارد</a>
-                        <a href="./tools/resources.html" class="lang-en" style="display:none">Resources</a>
-                        <a href="./corporate/about.html" class="lang-ar">عن المؤسس</a>
-                        <a href="./corporate/about.html" class="lang-en" style="display:none">About</a>
+                        <a href="/organization/md-code.html">The MD Code</a>
+                        <a href="/organization/core-system.html">CORE System</a>
+                        <a href="/tools/assessments.html" class="lang-ar">التقييمات</a>
+                        <a href="/tools/assessments.html" class="lang-en" style="display:none">Assessments</a>
+                        <a href="/tools/resources.html" class="lang-ar">الموارد</a>
+                        <a href="/tools/resources.html" class="lang-en" style="display:none">Resources</a>
+                        <a href="/corporate/about.html" class="lang-ar">من نحن</a>
+                        <a href="/corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
                     </div>
                 </div>
                 
@@ -287,6 +287,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
