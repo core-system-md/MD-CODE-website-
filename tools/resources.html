@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموارد | Resources</title>
+    <meta name="description" content="Exclusive resources and operational manuals for medical centers. THE MD CODE Resources.">
+    <link rel="icon" type="image/png" href="/assets/icon-gold.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'off-white': '#F9F9F9',
+                        'slate-navy': '#1A2536',
+                        'deep-teal': '#005B5C',
+                        'champagne-gold': '#C5A059',
+                        'platinum': '#E8E4E1'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+    <style>
+        .page-hero {
+            background-image: linear-gradient(rgba(26, 37, 54, 0.8), rgba(26, 37, 54, 0.9)), url('/assets/resources-hero.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .logo-nav { max-height: 40px; width: auto; object-fit: contain; }
+        .footer-logo { max-height: 48px; width: auto; object-fit: contain; }
+    </style>
+</head>
+<body class="bg-off-white text-slate-navy">
+
+    <nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+        <div class="container-narrow flex items-center justify-between h-20">
+            <a href="/index.html" class="flex items-center gap-3">
+                <img src="/assets/logo-teal.png" alt="THE MD CODE" class="logo-nav">
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/index.html" class="nav-link lang-ar">الرئيسية</a>
+                <a href="/index.html" class="nav-link lang-en" style="display:none">Home</a>
+                <a href="/organization/md-code.html" class="nav-link">The MD Code</a>
+                <a href="/organization/core-system.html" class="nav-link">CORE System</a>
+                <a href="/tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
+                <a href="/tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
+                <a href="/tools/resources.html" class="nav-link text-deep-teal font-bold lang-ar">الموارد</a>
+                <a href="/tools/resources.html" class="nav-link text-deep-teal font-bold lang-en" style="display:none">Resources</a>
+                <a href="/corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
+                <a href="/corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
+                <a href="/contact.html" class="nav-link lang-ar">تواصل</a>
+                <a href="/contact.html" class="nav-link lang-en" style="display:none">Contact</a>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="lang-toggle">
+                    <button class="lang-toggle-btn active" data-lang="ar">AR</button>
+                    <button class="lang-toggle-btn" data-lang="en">EN</button>
+                </div>
+                <button id="mobile-nav-toggle" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-nav-menu" class="hidden md:hidden border-t border-platinum/50 bg-off-white/95 backdrop-blur-xl">
+            <div class="container-narrow py-4 flex flex-col gap-3">
+                <a href="/index.html" class="nav-link lang-ar">الرئيسية</a>
+                <a href="/index.html" class="nav-link lang-en" style="display:none">Home</a>
+                <a href="/organization/md-code.html" class="nav-link">The MD Code</a>
+                <a href="/organization/core-system.html" class="nav-link">CORE System</a>
+                <a href="/tools/assessments.html" class="nav-link lang-ar">التقييمات</a>
+                <a href="/tools/assessments.html" class="nav-link lang-en" style="display:none">Assessments</a>
+                <a href="/tools/resources.html" class="nav-link lang-ar">الموارد</a>
+                <a href="/tools/resources.html" class="nav-link lang-en" style="display:none">Resources</a>
+                <a href="/corporate/about.html" class="nav-link lang-ar">عن المؤسس</a>
+                <a href="/corporate/about.html" class="nav-link lang-en" style="display:none">About</a>
+                <a href="/contact.html" class="nav-link lang-ar">تواصل</a>
+                <a href="/contact.html" class="nav-link lang-en" style="display:none">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero pt-32 pb-20 md:pt-40 md:pb-28 min-h-[60vh] flex items-center">
+        <div class="container-narrow relative z-10">
+            <div class="max-w-4xl">
+                <div class="mb-4">
+                    <span class="text-champagne-gold font-semibold text-sm tracking-wider uppercase">Resources</span>
+                </div>
+                <h1 class="heading-hero mb-6 text-white">
+                    <span class="lang-ar">الموارد والأدلة التشغيلية</span>
+                    <span class="lang-en" style="display:none">Operational Resources & Manuals</span>
+                </h1>
+                <p class="body-large text-white/90 max-w-2xl">
+                    <span class="lang-ar">مصادر حصرية وأدلة تشغيلية متقدمة لتطوير أداء العيادات والمراكز الطبية.</span>
+                    <span class="lang-en" style="display:none">Exclusive resources and advanced operational manuals to develop the performance of medical clinics and centers.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container-narrow">
+            <div class="text-center mb-16">
+                <h2 class="heading-section mb-4">
+                    <span class="lang-ar">الموارد المتاحة</span>
+                    <span class="lang-en" style="display:none">Available Resources</span>
+                </h2>
+                <p class="body-large max-w-2xl mx-auto">
+                    <span class="lang-ar">أدلة وبروتوكولات مصممة خصيصاً لرفع كفاءة العيادات الطبية</span>
+                    <span class="lang-en" style="display:none">Manuals and protocols specifically designed to enhance clinic efficiency</span>
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass-card p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-deep-teal/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-deep-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold">
+                            <span class="lang-ar">دليل استقبال المرضى</span>
+                            <span class="lang-en" style="display:none">Patient Reception Manual</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-navy/70 mb-4">
+                        <span class="lang-ar">بروتوكولات كاملة لتحسين تجربة الاستقبال وتقليل أوقات الانتظار.</span>
+                        <span class="lang-en" style="display:none">Complete protocols to enhance the reception experience and reduce wait times.</span>
+                    </p>
+                    <button class="btn-gold text-sm py-2 px-4 gated-download" data-asset="reception-manual">
+                        <span class="lang-ar">تحميل</span>
+                        <span class="lang-en" style="display:none">Download</span>
+                    </button>
+                </div>
+
+                <div class="glass-card p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-champagne-gold/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-champagne-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold">
+                            <span class="lang-ar">دليل التحليل المالي</span>
+                            <span class="lang-en" style="display:none">Financial Analysis Manual</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-navy/70 mb-4">
+                        <span class="lang-ar">أدوات ونماذج لتحليل الإيرادات وتحديد نقاط الهدر المالي.</span>
+                        <span class="lang-en" style="display:none">Tools and templates for revenue analysis and identifying financial leakage points.</span>
+                    </p>
+                    <button class="btn-gold text-sm py-2 px-4 gated-download" data-asset="financial-manual">
+                        <span class="lang-ar">تحميل</span>
+                        <span class="lang-en" style="display:none">Download</span>
+                    </button>
+                </div>
+
+                <div class="glass-card p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-deep-teal/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-deep-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold">
+                            <span class="lang-ar">دليل تدريب الكادر</span>
+                            <span class="lang-en" style="display:none">Staff Training Manual</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-navy/70 mb-4">
+                        <span class="lang-ar">برامج تدريبية متكاملة لتطوير المهارات التواصلية والسلوكية.</span>
+                        <span class="lang-en" style="display:none">Comprehensive training programs to develop communication and behavioral skills.</span>
+                    </p>
+                    <button class="btn-gold text-sm py-2 px-4 gated-download" data-asset="training-manual">
+                        <span class="lang-ar">تحميل</span>
+                        <span class="lang-en" style="display:none">Download</span>
+                    </button>
+                </div>
+
+                <div class="glass-card p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-champagne-gold/10 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-champagne-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        </div>
+                        <h3 class="text-lg font-bold">
+                            <span class="lang-ar">قوالب التقييم</span>
+                            <span class="lang-en" style="display:none">Assessment Templates</span>
+                        </h3>
+                    </div>
+                    <p class="text-sm text-slate-navy/70 mb-4">
+                        <span class="lang-ar">نماذج جاهزة للتقييم التشخيصي لجميع جوانب العيادة.</span>
+                        <span class="lang-en" style="display:none">Ready-made templates for diagnostic assessment of all clinic aspects.</span>
+                    </p>
+                    <button class="btn-gold text-sm py-2 px-4 gated-download" data-asset="assessment-templates">
+                        <span class="lang-ar">تحميل</span>
+                        <span class="lang-en" style="display:none">Download</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-dark py-16">
+        <div class="container-narrow">
+            <div class="grid md:grid-cols-3 gap-12 mb-12">
+                <div>
+                    <img src="/assets/logo-gold.png" alt="THE MD CODE" class="footer-logo mb-6">
+                    <p class="text-white/70 text-sm leading-relaxed mb-6">
+                        <span class="lang-ar">إن تطبيق هذه الأدلة والبروتوكولات يكتمل بربط الأداء البشري الاستشاري بالرصد الرقمي الفوري لنظام CORE System وبرنامج The MD Code لحوكمة المنشأة وتحقيق استدامة النمو المالي القائم على الأرقام والأخلاقيات المهنية.</span>
+                        <span class="lang-en" style="display:none">The execution of these operational manuals is fully realized when human consultative performance is synchronized with real-time digital tracking. CORE System and The MD Code merge behavioral transformation with precision metrics to secure healthcare center growth under absolute professional integrity.</span>
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 lang-ar">روابط سريعة</h4>
+                    <h4 class="font-bold text-white mb-6 lang-en" style="display:none">Quick Links</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="/organization/md-code.html">The MD Code</a>
+                        <a href="/organization/core-system.html">CORE System</a>
+                        <a href="/tools/assessments.html" class="lang-ar">التقييمات</a>
+                        <a href="/tools/assessments.html" class="lang-en" style="display:none">Assessments</a>
+                        <a href="/tools/resources.html" class="lang-ar">الموارد</a>
+                        <a href="/tools/resources.html" class="lang-en" style="display:none">Resources</a>
+                        <a href="/corporate/about.html" class="lang-ar">عن المؤسس</a>
+                        <a href="/corporate/about.html" class="lang-en" style="display:none">About</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-6 lang-ar">تواصل معنا</h4>
+                    <h4 class="font-bold text-white mb-6 lang-en" style="display:none">Contact Us</h4>
+                    <div class="flex flex-col gap-3 text-sm">
+                        <a href="mailto:mdcode2026@gmail.com" class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            mdcode2026@gmail.com
+                        </a>
+                        <a href="tel:+962786595990" class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            +962 78 659 5990
+                        </a>
+                        <a href="https://wa.me/962786595990" target="_blank" class="flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-4 mt-6">
+                        <a href="https://www.facebook.com/share/1BKgmhXMQy/" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-deep-teal transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-white/50 text-sm">
+                <p class="lang-ar">© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
+                <p class="lang-en" style="display:none">© 2026 THE MD CODE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
