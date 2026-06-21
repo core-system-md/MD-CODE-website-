@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوالب التقييم التشخيصي | THE MD CODE</title>
+    <link rel="icon" type="image/png" href="/assets/icon-gold.png">
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; background: #F9F9F9; color: #1A2536; line-height: 1.8; padding: 0; margin: 0; }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        .hero { background: linear-gradient(135deg, #1A2536, #005B5C); color: white; padding: 3rem 2rem; text-align: center; }
+        .hero h1 { margin: 0; font-size: 1.8rem; }
+        .hero p { margin: 0.5rem 0 0; opacity: 0.9; }
+        h2 { color: #005B5C; font-size: 1.4rem; margin-top: 2.5rem; border-bottom: 2px solid #C5A059; padding-bottom: 0.5rem; }
+        p { font-size: 15px; margin-bottom: 1rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .card { background: white; border: 1px solid #E8E4E1; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        .card h4 { color: #005B5C; font-weight: 700; margin-bottom: 1rem; }
+        .row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid #F1F5F9; font-size: 14px; }
+        .row:last-child { border-bottom: none; }
+        .score { display: flex; gap: 0.25rem; }
+        .score span { width: 32px; height: 32px; border: 2px solid #E2E8F0; border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; font-weight: 600; color: #64748B; }
+        .score span:hover { border-color: #C5A059; color: #C5A059; }
+        .score span.active { background: #005B5C; border-color: #005B5C; color: white; }
+        .total { background: linear-gradient(135deg, #005B5C, #1A2536); color: white; padding: 1.5rem; border-radius: 12px; text-align: center; margin: 2rem 0; }
+        .total .num { font-size: 3rem; font-weight: 800; }
+        .total .lbl { font-size: 14px; opacity: 0.9; margin-top: 0.5rem; }
+        .interp { background: #F0FDF4; border-right: 4px solid #005B5C; padding: 1.25rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; font-size: 15px; line-height: 1.8; }
+        .printable { background: #FFF; border: 2px dashed #C5A059; border-radius: 12px; padding: 2rem; margin-top: 3rem; }
+        .printable h3 { text-align: center; margin-bottom: 1.5rem; }
+        .form-line { border-bottom: 1px dotted #999; display: inline-block; min-width: 100px; }
+        .print-btn { position: fixed; bottom: 2rem; left: 2rem; background: linear-gradient(135deg, #C5A059, #B08D4E); color: white; padding: 1rem 1.5rem; border-radius: 50px; border: none; cursor: pointer; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; }
+        footer { background: #1A2536; color: white; padding: 2rem; text-align: center; margin-top: 4rem; }
+        footer a { color: #C5A059; text-decoration: none; }
+        @media print { .print-btn, footer, .score, .total { display: none !important; } .printable { border: 1px solid #000; } }
+    </style>
+</head>
+<body>
+
+<button onclick="window.print()" class="print-btn">🖨️ طباعة / حفظ PDF</button>
+
+<div class="hero">
+    <div style="font-size: 14px; opacity: 0.8; margin-bottom: 0.5rem;">أدوات التقييم الذاتي</div>
+    <h1>قوالب التقييم التشخيصي</h1>
+    <p>نماذج جاهزة لتقييم جميع جوانب العيادة</p>
+</div>
+
+<div class="container">
+
+    <h2>1. تقييم تجربة المريض</h2>
+    <div class="grid">
+        <div class="card">
+            <h4>🚪 الاستقبال والترحيب</h4>
+            <div class="row"><span>سرعة الرد (أقل من 2 دقيقة)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>نبرة الصوت والترحيب</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>توضيح الإجراءات والتكاليف</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>تأكيد الموعد قبل 24 ساعة</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+        </div>
+        <div class="card">
+            <h4>🛋️ بيئة الانتظار</h4>
+            <div class="row"><span>نظافة منطقة الاستقبال</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>راحة الانتظار (أقل من 15 دقيقة)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>خصوصية غرف الكشف</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>توفر المياه/المجلات</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+        </div>
+    </div>
+
+    <h2>2. تقييم العمليات الإدارية</h2>
+    <div class="grid">
+        <div class="card">
+            <h4>📋 المواعيد والحجز</h4>
+            <div class="row"><span>سهولة الحجز (هاتف/واتساب/أونلاين)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>نظام تذكير آلي</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>إدارة قائمة الانتظار</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>تقليل الغياب (أقل من 15%)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+        </div>
+        <div class="card">
+            <h4>💾 الملفات والسجلات</h4>
+            <div class="row"><span>ملف رقمي كامل لكل مريض</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>سجل الخطة والمواعيد المستقبلية</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>تتبع المتابعة بعد كل جلسة</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>تقارير أسبوعية وشهرية</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+        </div>
+    </div>
+
+    <h2>3. تقييم الأداء المالي</h2>
+    <div class="grid">
+        <div class="card">
+            <h4>💰 الإيرادات</h4>
+            <div class="row"><span>متوسط قيمة المريض (APV)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>نسبة قبول الخطة الكاملة</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>نسبة التحصيل (أعلى من 90%)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>تنويع مصادر الإيرادات</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+        </div>
+        <div class="card">
+            <h4>📉 التكاليف</h4>
+            <div class="row"><span>تكلفة اكتساب المريض (CAC)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>عائد الإنفاق التسويقي (ROAS)</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>تكاليف التشغيل مراقبة</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+            <div class="row"><span>مخزون الأدوات مُدار</span><div class="score"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div>
+        </div>
+    </div>
+
+    <div class="total" id="totalBox">
+        <div class="num" id="totalNum">0</div>
+        <div class="lbl">المجموع الكلي من 100 نقطة</div>
+        <div style="margin-top: 0.5rem; font-size: 13px; opacity: 0.8;">اضغط على الأرقام أعلاه لحساب مجموعك</div>
+    </div>
+
+    <div class="interp">
+        <strong>🔍 تفسير النتيجة:</strong><br>
+        <strong>85-100:</strong> ممتاز — مركزك في المستوى المتقدم.<br>
+        <strong>70-84:</strong> جيد — أساس قوي لكن يوجد نقاط ضعف.<br>
+        <strong>55-69:</strong> متوسط — تدخل عاجل مطلوب.<br>
+        <strong>أقل من 55:</strong> ضعيف — خطر إغلاق أو تراجع حاد.
+    </div>
+
+    <div class="printable">
+        <h3>تقرير التقييم — للطباعة والأرشفة</h3>
+        <div style="margin-bottom: 1rem;"><strong>اسم المركز:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <strong>التاريخ:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+        <div style="margin-bottom: 1rem;"><strong>المجموع:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> / 100</div>
+        <div style="border: 1px solid #E2E8F0; padding: 1rem; margin-bottom: 1rem; border-radius: 6px;">
+            <strong>أعلى 3 نقاط قوة:</strong><br><br>1. ................................................................................................<br>2. ................................................................................................<br>3. ................................................................................................
+        </div>
+        <div style="border: 1px solid #E2E8F0; padding: 1rem; margin-bottom: 1rem; border-radius: 6px;">
+            <strong>أعلى 3 نقاط ضعف:</strong><br><br>1. ................................................................................................<br>2. ................................................................................................<br>3. ................................................................................................
+        </div>
+        <div style="border: 1px solid #E2E8F0; padding: 1rem; margin-bottom: 1rem; border-radius: 6px;">
+            <strong>خطة العمل للـ 30 يوماً القادمة:</strong><br><br>................................................................................................<br>................................................................................................<br>................................................................................................
+        </div>
+        <div style="text-align: center; margin-top: 2rem;"><strong>توقيع المدير التنفيذي:</strong><div style="border-bottom: 1px solid #333; margin: 1.5rem auto 0; width: 60%; height: 40px;"></div></div>
+    </div>
+
+</div>
+
+<footer>
+    <div style="font-size: 14px; margin-bottom: 1rem;">
+        <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> | 
+        <a href="tel:+962786595990">+962 78 659 5990</a> | 
+        <a href="https://wa.me/962786595990">واتساب</a>
+    </div>
+    <div style="font-size: 12px; opacity: 0.6;">© 2026 THE MD CODE. جميع الحقوق محفوظة.</div>
+</footer>
+
+<script>
+    document.querySelectorAll('.score span').forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.parentElement.querySelectorAll('span').forEach(s => s.classList.remove('active'));
+            this.classList.add('active');
+            let total = 0;
+            document.querySelectorAll('.score span.active').forEach(s => total += parseInt(s.textContent));
+            document.getElementById('totalNum').textContent = total;
+        });
+    });
+</script>
+
+</body>
+</html>
