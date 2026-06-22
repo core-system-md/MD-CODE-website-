@@ -86,53 +86,97 @@
             color: #334155;
             line-height: 1.9;
         }
-        ul {
-            list-style: none;
-            margin: 1rem 0 1.5rem;
-            padding: 0;
+        .rating-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #E8E4E1;
+            gap: 1rem;
         }
-        li {
-            position: relative;
-            padding-right: 1.8rem;
-            margin-bottom: 0.9rem;
+        .rating-row:last-child { border-bottom: none; }
+        .rating-label { 
+            flex: 1; 
+            font-size: 0.95rem; 
             color: #334155;
-            line-height: 1.8;
+            line-height: 1.5;
         }
-        li::before {
-            content: "●";
-            position: absolute;
-            right: 0;
-            top: 0.15rem;
-            color: #C5A059;
-            font-size: 0.7rem;
+        .rating-numbers {
+            display: flex;
+            gap: 0.4rem;
+            direction: ltr;
+            flex-shrink: 0;
         }
-        li strong {
+        .rating-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #CBD5E1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #64748B;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+            user-select: none;
+        }
+        .rating-num:hover {
+            border-color: #005B5C;
             color: #005B5C;
+            transform: scale(1.1);
         }
-        blockquote {
-            background: #F0FDF4;
-            border-right: 4px solid #005B5C;
-            padding: 1.25rem 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0 10px 10px 0;
-            font-style: italic;
-            color: #1A2536;
-            line-height: 1.9;
-            font-size: 1rem;
+        .rating-num.selected {
+            background: #005B5C;
+            color: white;
+            border-color: #005B5C;
         }
-        .printable-section {
-            background: #FAFAFA;
-            border: 2px dashed #C5A059;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        .printable-section h3 {
+        .score-display {
+            background: linear-gradient(135deg, #1A2536, #005B5C);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
             text-align: center;
-            color: #1A2536;
+            margin: 2.5rem 0;
+            box-shadow: 0 10px 30px rgba(0,91,92,0.3);
+        }
+        .score-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            display: inline-block;
+        }
+        .score-separator {
+            font-size: 2rem;
+            opacity: 0.6;
+            margin: 0 0.5rem;
+        }
+        .score-total {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+        .score-label {
             font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            margin-top: 0;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+        .interpretation {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #E8E4E1;
+        }
+        .interpretation h4 {
+            color: #C5A059;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .interpretation p {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
         }
         .resource-table {
             width: 100%;
@@ -154,8 +198,33 @@
         .resource-table tr:nth-child(even) {
             background: #F8FAFC;
         }
-        .resource-table tr:hover {
-            background: #F1F5F9;
+        .printable-section {
+            background: #FAFAFA;
+            border: 2px dashed #C5A059;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        .printable-section h3 {
+            text-align: center;
+            color: #1A2536;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+        .form-line {
+            border-bottom: 1px solid #CBD5E1;
+            min-height: 2.5rem;
+            margin: 0.75rem 0;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 0.5rem;
+        }
+        .form-label {
+            font-weight: 700;
+            white-space: nowrap;
+            margin-left: 1rem;
+            color: #1A2536;
         }
         .footer {
             background: #1A2536;
@@ -214,29 +283,71 @@
         .nav-back:hover {
             background: rgba(26,37,54,0.95);
         }
+        .reset-btn {
+            display: block;
+            margin: 1rem auto;
+            background: transparent;
+            border: 2px solid #C5A059;
+            color: #C5A059;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .reset-btn:hover {
+            background: #C5A059;
+            color: white;
+        }
 
         @media (max-width: 768px) {
             .content { padding: 1.5rem 1rem; }
             .header { padding: 2rem 1rem 1.5rem; }
             .header h1 { font-size: 1.4rem; }
             .print-btn { bottom: 1rem; left: 1rem; padding: 0.75rem 1.2rem; font-size: 0.9rem; }
+            .rating-row { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+            .rating-numbers { align-self: flex-end; }
             .resource-table { font-size: 0.8rem; }
             .resource-table th, .resource-table td { padding: 0.5rem; }
+            .score-number { font-size: 2.5rem; }
         }
 
         @media print {
-            .print-btn, .nav-back { display: none !important; }
-            .page { box-shadow: none; max-width: 100%; }
+            .print-btn, .nav-back, .reset-btn { display: none !important; }
+            .page { box-shadow: none; max-width: 100%; margin: 0; }
             body { background: white; }
+            .content { padding: 1.5rem; }
+            .rating-num { 
+                border: 1px solid #999 !important; 
+                background: white !important; 
+                color: black !important;
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+            .rating-num.selected { 
+                background: #005B5C !important; 
+                color: white !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .score-display {
+                background: #1A2536 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 1.5rem;
+            }
             .printable-section {
                 border: 1px solid #999;
                 page-break-before: always;
                 margin-top: 0;
             }
-            .content { padding: 1.5rem; }
-            h2 { page-break-after: avoid; }
-            p, li { orphans: 3; widows: 3; }
-            .resource-table { page-break-inside: auto; }
+            h2 { page-break-after: avoid; font-size: 1.2rem; }
+            h3 { font-size: 1rem; }
+            p, li { font-size: 0.95rem; orphans: 3; widows: 3; }
+            .resource-table { page-break-inside: auto; font-size: 0.85rem; }
             .resource-table tr { page-break-inside: avoid; }
             .footer { background: #1A2536 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
@@ -257,81 +368,153 @@
         <div class="header">
             <div class="tag">أدوات تقييم ذاتية للمراكز الطبية</div>
             <h1>قوالب التقييم التشخيصي</h1>
-            <p>تقييم ذاتي شامل لقياس أداء المركز الطبي — من التجربة إلى النتيجة</p>
+            <p>تقييم ذاتي شامل لقياس أداء المركز الطبي — اضغط على الرقم المناسب لكل بند</p>
         </div>
 
         <div class="content">
             <div class="warning-box">
-                <strong>⚠️ تعليمة الاستخدام:</strong> اقرأ كل بند وقيّم وضعك الحالي من 1 (ضعيف جداً) إلى 5 (ممتاز). المجموع الكلي يُعطيك صورة واضحة عن حالة مركزك. يُفضل إجراء هذا التقييم شهرياً لمتابعة التحسن.
+                <strong>⚠️ تعليمة الاستخدام:</strong> اضغط على الرقم (1 إلى 5) لكل بند لتقييم وضعك. المجموع يظهر تلقائياً. يمكنك طباعة التقرير مع النتيجة أو بدونها.
             </div>
 
             <h2>1. تقييم تجربة المريض (Patient Experience)</h2>
             <h3>🚪 الاستقبال والترحيب</h3>
-            <table class="resource-table">
-                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
-                <tr><td>سرعة الرد على الاستفسار (أقل من 2 دقيقة)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>نبرة الصوت والترحيب (مهنية ودافئة)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>توضيح الإجراءات والتكاليف مسبقاً</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>تأكيد الموعد قبل 24 ساعة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-            </table>
+            <div class="rating-section" data-max="20">
+                <div class="rating-row" data-question="1">
+                    <span class="rating-label">سرعة الرد على الاستفسار (أقل من 2 دقيقة)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="2">
+                    <span class="rating-label">نبرة الصوت والترحيب (مهنية ودافئة)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="3">
+                    <span class="rating-label">توضيح الإجراءات والتكاليف مسبقاً</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="4">
+                    <span class="rating-label">تأكيد الموعد قبل 24 ساعة</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+            </div>
 
             <h3>🛋️ بيئة الانتظار والمرافق</h3>
-            <table class="resource-table">
-                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
-                <tr><td>نظافة وتنظيم منطقة الاستقبال</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>راحة الانتظار (مدة أقل من 15 دقيقة)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>خصوصية غرف الكشف</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>توفر المياه/المجلات/شاشة إرشادية</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-            </table>
+            <div class="rating-section" data-max="20">
+                <div class="rating-row" data-question="5">
+                    <span class="rating-label">نظافة وتنظيم منطقة الاستقبال</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="6">
+                    <span class="rating-label">راحة الانتظار (مدة أقل من 15 دقيقة)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="7">
+                    <span class="rating-label">خصوصية غرف الكشف</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="8">
+                    <span class="rating-label">توفر المياه/المجلات/شاشة إرشادية</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+            </div>
 
             <h2>2. تقييم العمليات الإدارية (Operations)</h2>
             <h3>📋 نظام المواعيد والحجز</h3>
-            <table class="resource-table">
-                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
-                <tr><td>سهولة حجز الموعد (هاتف/واتساب/أونلاين)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>نظام تذكير آلي (رسائل/واتساب)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>إدارة قائمة الانتظار (Waiting List)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>تقليل الغياب (No-Show أقل من 15%)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-            </table>
+            <div class="rating-section" data-max="20">
+                <div class="rating-row" data-question="9">
+                    <span class="rating-label">سهولة حجز الموعد (هاتف/واتساب/أونلاين)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="10">
+                    <span class="rating-label">نظام تذكير آلي (رسائل/واتساب)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="11">
+                    <span class="rating-label">إدارة قائمة الانتظار (Waiting List)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="12">
+                    <span class="rating-label">تقليل الغياب (No-Show أقل من 15%)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+            </div>
 
             <h3>💾 الملفات الرقمية والسجلات</h3>
-            <table class="resource-table">
-                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
-                <tr><td>ملف رقمي كامل لكل مريض</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>سجل الخطة والمواعيد المستقبلية</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>تتبع المتابعة (Follow-up) بعد كل جلسة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>تقارير أسبوعية وشهرية للإدارة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-            </table>
+            <div class="rating-section" data-max="20">
+                <div class="rating-row" data-question="13">
+                    <span class="rating-label">ملف رقمي كامل لكل مريض</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="14">
+                    <span class="rating-label">سجل الخطة والمواعيد المستقبلية</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="15">
+                    <span class="rating-label">تتبع المتابعة (Follow-up) بعد كل جلسة</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="16">
+                    <span class="rating-label">تقارير أسبوعية وشهرية للإدارة</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+            </div>
 
             <h2>3. تقييم الأداء المالي (Financial)</h2>
             <h3>💰 الإيرادات والتسعير</h3>
-            <table class="resource-table">
-                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
-                <tr><td>متوسط قيمة المريض (APV) مدروس</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>نسبة قبول الخطة الكاملة (أعلى من 60%)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>نسبة التحصيل (Collection Rate أعلى من 90%)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>تنويع مصادر الإيرادات (3 مصادر على الأقل)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-            </table>
-
-            <h3>📉 التكاليف والهدر</h3>
-            <table class="resource-table">
-                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
-                <tr><td>تكلفة اكتساب المريض (CAC) محسوبة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>عائد الإنفاق التسويقي (ROAS)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>تكاليف التشغيل الشهرية مراقبة ومقيدة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-                <tr><td>مخزون الأدوات/المستلزمات مُدار رقمياً</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
-            </table>
-
-            <div style="background: linear-gradient(135deg, #1A2536, #005B5C); color: white; padding: 2rem; border-radius: 16px; text-align: center; margin: 2.5rem 0;">
-                <div style="font-size: 3rem; font-weight: 800;">____ / 100</div>
-                <div style="font-size: 1rem; opacity: 0.9; margin-top: 0.5rem;">المجموع الكلي من 100 نقطة</div>
+            <div class="rating-section" data-max="20">
+                <div class="rating-row" data-question="17">
+                    <span class="rating-label">متوسط قيمة المريض (APV) مدروس</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="18">
+                    <span class="rating-label">نسبة قبول الخطة الكاملة (أعلى من 60%)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="19">
+                    <span class="rating-label">نسبة التحصيل (Collection Rate أعلى من 90%)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="20">
+                    <span class="rating-label">تنويع مصادر الإيرادات (3 مصادر على الأقل)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
             </div>
 
-            <div style="background: white; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-                <h4 style="color: #C5A059; margin-bottom: 1rem;">🔍 تفسير النتيجة:</h4>
-                <p style="margin-bottom: 0.75rem;"><strong>85-100:</strong> ممتاز — مركزك في المستوى المتقدم. ركّز على الابتكار والتوسع.</p>
-                <p style="margin-bottom: 0.75rem;"><strong>70-84:</strong> جيد — أساس قوي لكن يوجد نقاط ضعف واضحة تحتاج لتحسين فوري.</p>
-                <p style="margin-bottom: 0.75rem;"><strong>55-69:</strong> متوسط — مركزك يعمل لكنه يخسر إيرادات ومريضاً. تدخل عاجل مطلوب.</p>
+            <h3>📉 التكاليف والهدر</h3>
+            <div class="rating-section" data-max="20">
+                <div class="rating-row" data-question="21">
+                    <span class="rating-label">تكلفة اكتساب المريض (CAC) محسوبة</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="22">
+                    <span class="rating-label">عائد الإنفاق التسويقي (ROAS)</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="23">
+                    <span class="rating-label">تكاليف التشغيل الشهرية مراقبة ومقيدة</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+                <div class="rating-row" data-question="24">
+                    <span class="rating-label">مخزون الأدوات/المستلزمات مُدار رقمياً</span>
+                    <div class="rating-numbers"><span class="rating-num" data-value="1">1</span><span class="rating-num" data-value="2">2</span><span class="rating-num" data-value="3">3</span><span class="rating-num" data-value="4">4</span><span class="rating-num" data-value="5">5</span></div>
+                </div>
+            </div>
+
+            <div class="score-display">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    <span class="score-number" id="scoreValue">0</span>
+                    <span class="score-separator">/</span>
+                    <span class="score-total">100</span>
+                </div>
+                <div class="score-label" id="scoreText">اضغط على الأرقام أعلاه لحساب مجموعك</div>
+            </div>
+
+            <button class="reset-btn no-print" onclick="resetScores()">🔄 إعادة التقييم</button>
+
+            <div class="interpretation" id="interpretationBox">
+                <h4>🔍 تفسير النتيجة:</h4>
+                <p><strong>85-100:</strong> ممتاز — مركزك في المستوى المتقدم. ركّز على الابتكار والتوسع.</p>
+                <p><strong>70-84:</strong> جيد — أساس قوي لكن يوجد نقاط ضعف واضحة تحتاج لتحسين فوري.</p>
+                <p><strong>55-69:</strong> متوسط — مركزك يعمل لكنه يخسر إيرادات ومريضاً. تدخل عاجل مطلوب.</p>
                 <p><strong>أقل من 55:</strong> ضعيف — خطر إغلاق أو تراجع حاد. احتاج لإعادة هيكلة شاملة فوراً.</p>
             </div>
 
@@ -344,7 +527,7 @@
                     <tr><td><strong>اسم المقيّم:</strong></td><td>........................................................</td></tr>
                 </table>
 
-                <p style="margin-top: 1.5rem;"><strong>المجموع الكلي:</strong> .............. / 100</p>
+                <p style="margin-top: 1.5rem;"><strong>المجموع الكلي:</strong> <span id="printScore">..............</span> / 100</p>
 
                 <p style="margin-top: 1.5rem;"><strong>أعلى 3 نقاط قوة:</strong></p>
                 <div style="border: 1px solid #CBD5E1; min-height: 40px; border-radius: 8px; padding: 0.75rem; margin: 0.5rem 0; background: white;">1. ..............................................................................................................................................................</div>
@@ -381,5 +564,62 @@
             </p>
         </div>
     </div>
+
+    <script>
+        const ratings = {};
+        const scoreValue = document.getElementById('scoreValue');
+        const scoreText = document.getElementById('scoreText');
+        const printScore = document.getElementById('printScore');
+
+        document.querySelectorAll('.rating-row').forEach(row => {
+            const nums = row.querySelectorAll('.rating-num');
+            nums.forEach(num => {
+                num.addEventListener('click', function() {
+                    const qId = row.dataset.question;
+                    const val = parseInt(this.dataset.value);
+                    
+                    nums.forEach(n => n.classList.remove('selected'));
+                    
+                    nums.forEach(n => {
+                        if (parseInt(n.dataset.value) <= val) {
+                            n.classList.add('selected');
+                        }
+                    });
+                    
+                    ratings[qId] = val;
+                    calculateTotal();
+                });
+            });
+        });
+
+        function calculateTotal() {
+            let total = 0;
+            for (let key in ratings) {
+                total += ratings[key];
+            }
+            scoreValue.textContent = total;
+            printScore.textContent = total;
+            
+            let text = '';
+            if (total === 0) {
+                text = 'اضغط على الأرقام أعلاه لحساب مجموعك';
+            } else if (total >= 85) {
+                text = 'ممتاز! مركزك في المستوى المتقدم 🌟';
+            } else if (total >= 70) {
+                text = 'جيد — يوجد نقاط ضعف تحتاج تحسين ⚡';
+            } else if (total >= 55) {
+                text = 'متوسط — تدخل عاجل مطلوب ⚠️';
+            } else {
+                text = 'ضعيف — إعادة هيكلة شاملة ضرورية 🚨';
+            }
+            scoreText.textContent = text;
+        }
+
+        function resetScores() {
+            document.querySelectorAll('.rating-num').forEach(n => n.classList.remove('selected'));
+            for (let key in ratings) delete ratings[key];
+            calculateTotal();
+        }
+    </script>
 </body>
 </html>
