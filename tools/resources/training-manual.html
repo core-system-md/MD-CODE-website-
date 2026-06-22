@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل تنظيم العمليات وزيادة العائد المالي | THE MD CODE</title>
     <link rel="icon" type="image/png" href="/assets/icon-gold.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
             background: #F9F9F9;
             color: #1A2536;
             line-height: 1.8;
@@ -119,41 +120,6 @@
             line-height: 1.9;
             font-size: 1rem;
         }
-        .highlight-box {
-            background: linear-gradient(135deg, #C5A05910, #005B5C08);
-            border: 1px solid #E8E4E1;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        .highlight-box h3 {
-            margin-top: 0;
-            color: #005B5C;
-        }
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .metric-card {
-            background: white;
-            border: 1px solid #E8E4E1;
-            border-radius: 10px;
-            padding: 1.25rem;
-            text-align: center;
-        }
-        .metric-card .num {
-            font-size: 2rem;
-            font-weight: 800;
-            color: #005B5C;
-        }
-        .metric-card .lbl {
-            font-size: 0.8rem;
-            color: #64748B;
-            margin-top: 0.5rem;
-            line-height: 1.5;
-        }
         .printable-section {
             background: #FAFAFA;
             border: 2px dashed #C5A059;
@@ -168,26 +134,28 @@
             margin-bottom: 1.5rem;
             margin-top: 0;
         }
-        .form-line {
-            border-bottom: 1px dotted #94A3B8;
-            display: inline-block;
-            min-width: 80px;
-            height: 1.5rem;
-            vertical-align: bottom;
+        .resource-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
         }
-        .form-block {
+        .resource-table th, .resource-table td {
             border: 1px solid #CBD5E1;
-            background: white;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 6px;
-            min-height: 60px;
+            padding: 0.8rem;
+            text-align: right;
+            vertical-align: top;
         }
-        .form-block strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1A2536;
-            font-size: 0.95rem;
+        .resource-table th {
+            background: #1A2536;
+            color: white;
+            font-weight: 600;
+        }
+        .resource-table tr:nth-child(even) {
+            background: #F8FAFC;
+        }
+        .resource-table tr:hover {
+            background: #F1F5F9;
         }
         .footer {
             background: #1A2536;
@@ -222,6 +190,9 @@
             box-shadow: 0 4px 20px rgba(197,160,89,0.4);
             z-index: 1000;
             transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .print-btn:hover {
             transform: translateY(-2px);
@@ -249,7 +220,8 @@
             .header { padding: 2rem 1rem 1.5rem; }
             .header h1 { font-size: 1.4rem; }
             .print-btn { bottom: 1rem; left: 1rem; padding: 0.75rem 1.2rem; font-size: 0.9rem; }
-            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+            .resource-table { font-size: 0.8rem; }
+            .resource-table th, .resource-table td { padding: 0.5rem; }
         }
 
         @media print {
@@ -264,141 +236,202 @@
             .content { padding: 1.5rem; }
             h2 { page-break-after: avoid; }
             p, li { orphans: 3; widows: 3; }
-            .highlight-box { page-break-inside: avoid; }
+            .resource-table { page-break-inside: auto; }
+            .resource-table tr { page-break-inside: avoid; }
             .footer { background: #1A2536 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
 <body>
 
-<a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
-<button onclick="window.print()" class="print-btn no-print">🖨️ طباعة / PDF</button>
+    <a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
+    
+    <button onclick="window.print()" class="print-btn no-print">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5z" />
+        </svg>
+        طباعة / PDF
+    </button>
 
-<div class="page">
-    <div class="header">
-        <div class="tag">دليل تطبيقي لإدارة المراكز</div>
-        <h1>دليل تنظيم العمليات</h1>
-        <p>وزيادة العائد المالي للمراكز الطبية — من الفوضى الإدارية إلى النمو المستدام</p>
-    </div>
-
-    <div class="content">
-        <div class="warning-box">
-            <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن خطي.
+    <div class="page">
+        <div class="header">
+            <div class="tag">دليل تطبيقي للإدارة والكادر</div>
+            <h1>دليل تنظيم العمليات وزيادة العائد المالي</h1>
+            <p>لتنظيم العمليات الإدارية ورفع الكفاءة المالية — من التشخيص إلى التنفيذ</p>
         </div>
 
-        <div class="metrics-grid">
-            <div class="metric-card">
-                <div class="num">75%</div>
-                <div class="lbl">نسبة قبول الخطة الكاملة المستهدفة</div>
+        <div class="content">
+            <div class="warning-box">
+                <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن خطي.
             </div>
-            <div class="metric-card">
-                <div class="num">24h</div>
-                <div class="lbl">نافذة المتابعة القصوى</div>
-            </div>
-            <div class="metric-card">
-                <div class="num">3</div>
-                <div class="lbl">خيارات علاجية كحد أقصى</div>
-            </div>
-            <div class="metric-card">
-                <div class="num">30%</div>
-                <div class="lbl">نسبة الزيادة المالية المستهدفة</div>
-            </div>
-        </div>
 
-        <h2>1. تشخيص الوضع الحالي (Audit إداري)</h2>
-        <p>قبل أي تغيير، يجب معرفة أين تتسرب الأموال والمرضى. معظم المراكز الطبية تخسر 20-40% من إيراداتها المحتملة بسبب ثغرات إدارية بسيطة:</p>
-        <ul>
-            <li><strong>تسرب المرضى:</strong> يتصل ولا يحجز، أو يحجز ولا يحضر، أو يحضر ولا يكمل.</li>
-            <li><strong>تسرب الإيرادات:</strong> جلسات مفردة بدلاً من خطط كاملة، خصومات عشوائية.</li>
-            <li><strong>تسرب الوقت:</strong> طبيب يقضي 40% من وقته في إدارة بدلاً من الكشف.</li>
-            <li><strong>تسرب البيانات:</strong> لا يوجد سجل رقمي واضح لكل مريض.</li>
-        </ul>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                <div style="background: #F0FDF4; border-radius: 12px; padding: 1.5rem; text-align: center; border: 1px solid #BBF7D0;">
+                    <div style="font-size: 2rem; font-weight: 800; color: #005B5C;">75%</div>
+                    <div style="font-size: 0.85rem; color: #4a5568;">نسبة قبول الخطة الكاملة المستهدفة</div>
+                </div>
+                <div style="background: #F0FDF4; border-radius: 12px; padding: 1.5rem; text-align: center; border: 1px solid #BBF7D0;">
+                    <div style="font-size: 2rem; font-weight: 800; color: #005B5C;">24h</div>
+                    <div style="font-size: 0.85rem; color: #4a5568;">نافذة المتابعة القصوى</div>
+                </div>
+                <div style="background: #F0FDF4; border-radius: 12px; padding: 1.5rem; text-align: center; border: 1px solid #BBF7D0;">
+                    <div style="font-size: 2rem; font-weight: 800; color: #005B5C;">3</div>
+                    <div style="font-size: 0.85rem; color: #4a5568;">خيارات علاجية كحد أقصى</div>
+                </div>
+                <div style="background: #F0FDF4; border-radius: 12px; padding: 1.5rem; text-align: center; border: 1px solid #BBF7D0;">
+                    <div style="font-size: 2rem; font-weight: 800; color: #005B5C;">30%</div>
+                    <div style="font-size: 0.85rem; color: #4a5568;">نسبة الزيادة المالية المستهدفة</div>
+                </div>
+            </div>
 
-        <h2>2. بناء نظام CORE للحوكمة الرقمية</h2>
-        <div class="highlight-box">
+            <h2>1. تشخيص الوضع الحالي (Audit إداري)</h2>
+            <p>قبل أي تغيير، يجب معرفة أين تتسرب الأموال والمرضى. معظم المراكز الطبية تخسر 20-40% من إيراداتها المحتملة بسبب ثغرات إدارية بسيطة:</p>
+            <ul>
+                <li><strong>تسرب المرضى:</strong> يتصل ولا يحجز، أو يحجز ولا يحضر، أو يحضر ولا يكمل.</li>
+                <li><strong>تسرب الإيرادات:</strong> جلسات مفردة بدلاً من خطط كاملة، خصومات عشوائية.</li>
+                <li><strong>تسرب الوقت:</strong> طبيب يقضي 40% من وقته في إدارة بدلاً من الكشف.</li>
+                <li><strong>تسرب البيانات:</strong> لا يوجد سجل رقمي واضح لكل مريض.</li>
+            </ul>
+
+            <h2>2. بناء نظام CORE للحوكمة الرقمية</h2>
             <h3>الركائز الأربع لنظام CORE</h3>
-            <ul style="margin-bottom: 0;">
+            <ul>
                 <li><strong>C — Capture (الالتقاط):</strong> كل استفسار يُسجل. كل مكالمة، كل رسالة، كل زيارة.</li>
                 <li><strong>O — Organize (التنظيم):</strong> كل مريض يملك ملفاً رقمياً واضحاً.</li>
                 <li><strong>R — Review (المراجعة):</strong> تقرير أسبوعي إلزامي: كم استفسار؟ كم حجز؟ كم حضر؟ كم أكمل؟</li>
                 <li><strong>E — Execute (التنفيذ):</strong> قرار فوري بناءً على البيانات. لا تأجيل.</li>
             </ul>
-        </div>
 
-        <h2>3. مؤشرات الأداء الرئيسية (KPIs)</h2>
-        <ul>
-            <li><strong>تحويل الاستفسارات:</strong> الهدف 60%+ (استفسار → حجز)</li>
-            <li><strong>حضور المواعيد:</strong> الهدف 85%+ (حجز → حضور)</li>
-            <li><strong>قبول الخطة:</strong> الهدف 75%+ (حضور → خطة كاملة)</li>
-            <li><strong>متوسط قيمة المريض:</strong> زيادة 25% خلال 90 يوماً</li>
-        </ul>
+            <h2>3. مؤشرات الأداء الرئيسية (KPIs)</h2>
+            <table class="resource-table">
+                <tr>
+                    <th>المؤشر</th>
+                    <th>الهدف</th>
+                    <th>الوصف</th>
+                </tr>
+                <tr>
+                    <td><strong>تحويل الاستفسارات</strong></td>
+                    <td>60%+</td>
+                    <td>استفسار → حجز</td>
+                </tr>
+                <tr>
+                    <td><strong>حضور المواعيد</strong></td>
+                    <td>85%+</td>
+                    <td>حجز → حضور</td>
+                </tr>
+                <tr>
+                    <td><strong>قبول الخطة</strong></td>
+                    <td>75%+</td>
+                    <td>حضور → خطة كاملة</td>
+                </tr>
+                <tr>
+                    <td><strong>متوسط قيمة المريض</strong></td>
+                    <td>+25%</td>
+                    <td>زيادة خلال 90 يوماً</td>
+                </tr>
+            </table>
 
-        <h2>4. إعادة هيكلة التسعير</h2>
-        <ul>
-            <li>إلغاء سعر الجلسة المفردة من القائمة الرئيسية.</li>
-            <li>تقديم 3 مستويات: أساسية (6 أشهر)، متوسطة (3 أشهر)، مكثفة (شهر).</li>
-            <li>تضمين المتابعة والضمان في السعر، لا كإضافة.</li>
-            <li>عرض خصم 10% للدفع الكامل مقدماً.</li>
-            <li>تقسيط بدون فوائد على 3 دفعات.</li>
-        </ul>
+            <h2>4. إعادة هيكلة التسعير</h2>
+            <ul>
+                <li>إلغاء سعر الجلسة المفردة من القائمة الرئيسية.</li>
+                <li>تقديم 3 مستويات: أساسية (6 أشهر)، متوسطة (3 أشهر)، مكثفة (شهر).</li>
+                <li>تضمين المتابعة والضمان في السعر، لا كإضافة.</li>
+                <li>عرض خصم 10% للدفع الكامل مقدماً.</li>
+                <li>تقسيط بدون فوائد على 3 دفعات.</li>
+            </ul>
 
-        <h2>5. خطة التنفيذ خلال 90 يوماً</h2>
-        <div class="highlight-box">
-            <h3 style="margin-top: 0;">المرحلة الأولى (أسبوع 1-4): الأساس</h3>
-            <ul style="margin-bottom: 0;">
+            <h2>5. خطة التنفيذ خلال 90 يوماً</h2>
+            <h3>المرحلة الأولى (أسبوع 1-4): الأساس</h3>
+            <ul>
                 <li>تسجيل كل استفسار والرد عليه بنفس اليوم.</li>
                 <li>تدريب فريق الاستقبال يومياً 10 دقائق.</li>
                 <li>إنشاء ملف رقمي لكل مريض جديد.</li>
             </ul>
-        </div>
-        <div class="highlight-box">
-            <h3 style="margin-top: 0;">المرحلة الثانية (أسبوع 5-8): التحسين</h3>
-            <ul style="margin-bottom: 0;">
+            <h3>المرحلة الثانية (أسبوع 5-8): التحسين</h3>
+            <ul>
                 <li>قياس KPIs يومياً ومراجعة أسبوعية.</li>
                 <li>متابعة آليّة خلال 24 ساعة.</li>
                 <li>تدريب الأطباء على الاتفاق المسبق.</li>
             </ul>
-        </div>
-        <div class="highlight-box">
-            <h3 style="margin-top: 0;">المرحلة الثالثة (أسبوع 9-12): التوسع</h3>
-            <ul style="margin-bottom: 0;">
+            <h3>المرحلة الثالثة (أسبوع 9-12): التوسع</h3>
+            <ul>
                 <li>إعادة هيكلة التسعير.</li>
                 <li>تفعيل نظام CORE الكامل.</li>
                 <li>تقييم النتائج.</li>
             </ul>
+
+            <div class="printable-section">
+                <h3>نموذج التدقيق الأسبوعي — للطباعة</h3>
+                <table class="resource-table">
+                    <tr>
+                        <th colspan="2">بيانات المراجعة</th>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;"><strong>اسم المركز:</strong></td>
+                        <td>........................................................</td>
+                    </tr>
+                    <tr>
+                        <td><strong>الأسبوع:</strong></td>
+                        <td>........................................................</td>
+                    </tr>
+                    <tr>
+                        <td><strong>تاريخ المراجعة:</strong></td>
+                        <td>........................................................</td>
+                    </tr>
+                </table>
+
+                <table class="resource-table" style="margin-top: 1.5rem;">
+                    <tr>
+                        <th>المؤشر</th>
+                        <th>العدد</th>
+                        <th>النسبة</th>
+                    </tr>
+                    <tr>
+                        <td>1. تحويل الاستفسارات</td>
+                        <td>استفسارات: .............. حجوزات: ..............</td>
+                        <td>.............. %</td>
+                    </tr>
+                    <tr>
+                        <td>2. حضور المواعيد</td>
+                        <td>حجوزات: .............. حضور: ..............</td>
+                        <td>.............. %</td>
+                    </tr>
+                    <tr>
+                        <td>3. قبول الخطة الكاملة</td>
+                        <td>حضور: .............. قبول: ..............</td>
+                        <td>.............. %</td>
+                    </tr>
+                    <tr>
+                        <td>4. متوسط قيمة المريض</td>
+                        <td>إجمالي: .............. / عدد: ..............</td>
+                        <td>متوسط: ..............</td>
+                    </tr>
+                </table>
+
+                <p style="margin-top: 1.5rem;"><strong>5. أسباب التسرب:</strong></p>
+                <div style="border: 1px solid #CBD5E1; min-height: 80px; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: white;"></div>
+
+                <p><strong>6. قرار التنفيذ الفوري:</strong></p>
+                <div style="border: 1px solid #CBD5E1; min-height: 80px; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: white;"></div>
+
+                <table class="resource-table" style="margin-top: 2rem;">
+                    <tr>
+                        <td style="width: 50%;"><strong>توقيع المدير التنفيذي:</strong><br><br>........................................................</td>
+                        <td><strong>التاريخ:</strong><br><br>........................................................</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
-        <div class="printable-section">
-            <h3>نموذج التدقيق الأسبوعي — للطباعة</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                <div><strong>اسم المركز:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-                <div><strong>الأسبوع:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-            </div>
-            <div style="margin-bottom: 1rem;"><strong>تاريخ المراجعة:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-
-            <div class="form-block"><strong>1. تحويل الاستفسارات:</strong> استفسارات: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> حجوزات: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> نسبة: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span>%</div>
-            <div class="form-block"><strong>2. حضور المواعيد:</strong> حجوزات: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> حضور: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> نسبة: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span>%</div>
-            <div class="form-block"><strong>3. قبول الخطة الكاملة:</strong> حضور: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> قبول: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> نسبة: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span>%</div>
-            <div class="form-block"><strong>4. متوسط قيمة المريض:</strong> إجمالي: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> / عدد: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span> = متوسط: <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-            <div class="form-block"><strong>5. أسباب التسرب:</strong><br><br>................................................................................................................................................................................................................................................................................................................................................................................................</div>
-            <div class="form-block"><strong>6. قرار التنفيذ الفوري:</strong><br><br>................................................................................................................................................................................................................................................................................................................................................................................................</div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <strong>توقيع المدير التنفيذي</strong>
-                <div style="border-bottom: 1px solid #333; margin: 1.5rem auto 0; width: 50%; height: 40px;"></div>
-            </div>
+        <div class="footer">
+            <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
+            <p>هذا الدليل خاص بعملاء THE MD CODE. يُمنع النسخ أو التوزيع بدون إذن خطي.</p>
+            <p>
+                <a href="/index.html">الرئيسية</a> |
+                <a href="/tools/resources.html">الموارد</a> |
+                <a href="/contact.html">تواصل معنا</a>
+            </p>
         </div>
     </div>
-
-    <div class="footer">
-        <p style="font-size: 1rem; margin-bottom: 0.5rem;">
-            <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> |
-            <a href="tel:+962786595990">+962 78 659 5990</a> |
-            <a href="https://wa.me/962786595990">واتساب</a>
-        </p>
-        <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
-    </div>
-</div>
-
 </body>
 </html>
