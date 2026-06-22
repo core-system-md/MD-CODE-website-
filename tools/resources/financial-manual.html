@@ -225,15 +225,20 @@
         }
 
         @media print {
-            .print-btn { display: none !important; }
-            .page { box-shadow: none; max-width: 100%; }
-            body { background: white; }
+            .print-btn, .nav-back { display: none !important; }
+            .page { margin: 0; box-shadow: none; }
+            .header { padding: 1.5rem 1rem; }
+            .content { padding: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            h3 { font-size: 1rem; }
+            p, li { font-size: 0.95rem; }
+            .resource-table { font-size: 0.85rem; }
+            .resource-table th, .resource-table td { padding: 0.6rem; }
             .printable-section {
                 border: 1px solid #999;
                 page-break-before: always;
                 margin-top: 0;
             }
-            .content { padding: 1.5rem; }
             h2 { page-break-after: avoid; }
             p, li { orphans: 3; widows: 3; }
             .resource-table { page-break-inside: auto; }
