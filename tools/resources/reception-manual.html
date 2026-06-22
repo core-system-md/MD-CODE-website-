@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دليل الـ 14 يوماً لرفع نسبة قبول العلاج | THE MD CODE</title>
     <link rel="icon" type="image/png" href="/assets/icon-gold.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
             background: #F9F9F9;
             color: #1A2536;
             line-height: 1.8;
@@ -133,52 +134,28 @@
             margin-bottom: 1.5rem;
             margin-top: 0;
         }
-        .form-line {
-            border-bottom: 1px dotted #94A3B8;
-            display: inline-block;
-            min-width: 100px;
-            height: 1.5rem;
-            vertical-align: bottom;
+        .resource-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
         }
-        .form-block {
+        .resource-table th, .resource-table td {
             border: 1px solid #CBD5E1;
-            background: white;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 6px;
-            min-height: 80px;
+            padding: 0.8rem;
+            text-align: right;
+            vertical-align: top;
         }
-        .form-block strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1A2536;
-            font-size: 0.95rem;
+        .resource-table th {
+            background: #1A2536;
+            color: white;
+            font-weight: 600;
         }
-        .checkbox-line {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
+        .resource-table tr:nth-child(even) {
+            background: #F8FAFC;
         }
-        .checkbox-line input {
-            width: 18px;
-            height: 18px;
-        }
-        .signatures {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 2px solid #E2E8F0;
-        }
-        .signatures > div {
-            text-align: center;
-            width: 45%;
-        }
-        .signatures .line {
-            border-bottom: 1px solid #333;
-            margin-top: 2rem;
-            height: 40px;
+        .resource-table tr:hover {
+            background: #F1F5F9;
         }
         .footer {
             background: #1A2536;
@@ -213,6 +190,9 @@
             box-shadow: 0 4px 20px rgba(197,160,89,0.4);
             z-index: 1000;
             transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .print-btn:hover {
             transform: translateY(-2px);
@@ -240,8 +220,8 @@
             .header { padding: 2rem 1rem 1.5rem; }
             .header h1 { font-size: 1.4rem; }
             .print-btn { bottom: 1rem; left: 1rem; padding: 0.75rem 1.2rem; font-size: 0.9rem; }
-            .signatures { flex-direction: column; gap: 1.5rem; }
-            .signatures > div { width: 100%; }
+            .resource-table { font-size: 0.8rem; }
+            .resource-table th, .resource-table td { padding: 0.5rem; }
         }
 
         @media print {
@@ -256,102 +236,135 @@
             .content { padding: 1.5rem; }
             h2 { page-break-after: avoid; }
             p, li { orphans: 3; widows: 3; }
+            .resource-table { page-break-inside: auto; }
+            .resource-table tr { page-break-inside: avoid; }
             .footer { background: #1A2536 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
 <body>
 
-<a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
-<button onclick="window.print()" class="print-btn no-print">🖨️ طباعة / PDF</button>
+    <a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
+    
+    <button onclick="window.print()" class="print-btn no-print">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5z" />
+        </svg>
+        طباعة / PDF
+    </button>
 
-<div class="page">
-    <div class="header">
-        <div class="tag">دليل تطبيقي للأطباء</div>
-        <h1>دليل الـ 14 يوماً</h1>
-        <p>لرفع نسبة قبول العلاج إلى 75% — من الجلسة الواحدة إلى الخطة الكاملة</p>
-    </div>
-
-    <div class="content">
-        <div class="warning-box">
-            <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن خطي.
+    <div class="page">
+        <div class="header">
+            <div class="tag">دليل تطبيقي لفرق الاستقبال</div>
+            <h1>دليل الـ 14 يوماً لرفع نسبة قبول العلاج</h1>
+            <p>لمنع تسرب المرضى في المبيعات والمتابعة — من الاستفسار إلى الحجز المؤكد</p>
         </div>
 
-        <h2>1. التحول من الجلسة الواحدة إلى الخطة الكاملة</h2>
-        <p>التوقف الفوري عن بيع جلسات مفردة أو إجراءات مجزأة داخل غرفة الكشف. الممارسة المعتمدة تقضي باستبدالها بـ <strong>"خطة علاجية مكتوبة"</strong> واضحة ومقسمة إلى مراحل زمنية وموثقة بالكامل في ملف المريض.</p>
-        <p>عند فحص المريض، اشرح له بوضوح الأثر السلبي والمشاكل الصحية والمالية الناتجة عن تأجيل أو إهمال استكمال العلاج كاملاً.</p>
-
-        <h2>2. فهم المريض ومساعدته على القرار</h2>
-        <p>يعتمد النجاح على وضع نفسك مكان المريض لفهم مخاوفه الحقيقية وعزل قلقه من القرار المالي أو الطبي. اطرح دائماً أسئلة مفتوحة:</p>
-        <blockquote>"ما هي النتائج والأثر الصحي الذي تتمنى رؤيته بعد انتهاء العلاج تماماً؟"</blockquote>
-        <p>هذا الأسلوب يساعد المريض على اكتشاف رغبته بالشفاء بنفسه دون الشعور بأي ضغط بيعي تجاري مباشر.</p>
-
-        <h2>3. الاتفاق المسبق مع المريض (Up-Front Contract)</h2>
-        <p>تنظيم وتوجيه وقت الجلسة الاستشارية الأولى يمنع تردد المريض عند الحديث عن التفاصيل المالية لاحقاً. يلتزم الطبيب بصياغة اتفاق في أول دقيقتين من اللقاء:</p>
-        <blockquote>"سأقوم اليوم بفحصك بدقة لنعرف المشكلة الحقيقية، وفي نهاية الجلسة سأعطيك خطة مكتوبة بمراحلها وتكلفة كل مرحلة، ونقرر معاً من أين نبدأ. هل هذا يناسبك؟"</blockquote>
-
-        <h2>4. تقديم 3 خيارات محددة فقط</h2>
-        <p>حماية المريض من التشتت الناتج عن كثرة التفاصيل الطبية المعقدة. الممارسة الطبية الحديثة تلزم بحصر الحلول المعروضة في <strong>3 خيارات فقط</strong> كحد أقصى:</p>
-        <ul>
-            <li><strong>الحل الأول:</strong> الخطة العلاجية المثالية الكاملة لتحقيق أفضل نتيجة مستدامة.</li>
-            <li><strong>الحل الثاني:</strong> الخطة المرحلية المقسمة على فترات زمنية متباعدة لتسهيل الالتزام.</li>
-            <li><strong>الحل الثالث:</strong> الإجراء الأساسي المستعجل لإيقاف الضرر الحالي فقط.</li>
-        </ul>
-
-        <h2>5. التعامل مع "سأفكر وأتصل لاحقاً"</h2>
-        <p>تطبيق تمرين التناغم الميداني لاكتشاف الاعتراض الحقيقي المخفي وراء التردد. الرد المباشر بلطف وبصيغة مهنية:</p>
-        <blockquote>"بالتأكيد، قرارك مهم جداً. ولكن دعني أسألك: ما الذي يحتاج إلى تفكير أكثر لنتعامل معه الآن؛ هل هو الوقت، التكلفة، أم تفصيل آخر في الخطة الطبية؟"</blockquote>
-
-        <div class="printable-section">
-            <h3>نموذج الخطة العلاجية المكتوبة — للطباعة</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                <div><strong>اسم المريض:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-                <div><strong>التاريخ:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-            </div>
-            <div style="margin-bottom: 1rem;"><strong>رقم الملف:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-
-            <div class="form-block">
-                <strong>1. التشخيص الحالي والمشاكل الناتجة عن تأجيل العلاج:</strong>
-                <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 0.5rem;">................................................................................................................................................................................................................................................................................................................................................................................................</p>
+        <div class="content">
+            <div class="warning-box">
+                <strong>⚠️ ملاحظة:</strong> هذا الدليل خاص بعملاء THE MD CODE. يُمنع نسخه أو توزيعه بدون إذن خطي.
             </div>
 
-            <div class="form-block">
-                <strong>2. مراحل المنظومة العلاجية المقترحة:</strong>
-                <div style="margin-top: 0.75rem; font-size: 0.9rem; line-height: 2.2;">
-                    • المرحلة الأولى: ........................................................ التكلفة: .............. الجدول: ..............<br>
-                    • المرحلة الثانية: ........................................................ التكلفة: .............. الجدول: ..............<br>
-                    • المرحلة الثالثة: ........................................................ التكلفة: .............. الجدول: ..............
-                </div>
-            </div>
+            <h2>1. التحول من الجلسة الواحدة إلى الخطة الكاملة</h2>
+            <p>التوقف الفوري عن بيع جلسات مفردة أو إجراءات مجزأة داخل غرفة الكشف. الممارسة المعتمدة تقضي باستبدالها بـ <strong>"خطة علاجية مكتوبة"</strong> واضحة ومقسمة إلى مراحل زمنية وموثقة بالكامل في ملف المريض.</p>
+            <p>عند فحص المريض، اشرح له بوضوح الأثر السلبي والمشاكل الصحية والمالية الناتجة عن تأجيل أو إهمال استكمال العلاج كاملاً.</p>
 
-            <div class="form-block">
-                <strong>3. نتيجة الاتفاق المسبق وقبول المريض:</strong>
-                <div class="checkbox-line"><input type="checkbox"> المريض وافق على الخطة كاملة وتم تسجيلها على نظام CORE إلكترونياً.</div>
-                <div class="checkbox-line"><input type="checkbox"> المريض اختار الحل المرحلي البديل (البدء بالمرحلة الأولى وجدولة الباقي).</div>
-            </div>
+            <h2>2. فهم المريض ومساعدته على القرار</h2>
+            <p>يعتمد النجاح على وضع نفسك مكان المريض لفهم مخاوفه الحقيقية وعزل قلقه من القرار المالي أو الطبي. اطرح دائماً أسئلة مفتوحة:</p>
+            <blockquote>"ما هي النتائج والأثر الصحي الذي تتمنى رؤيته بعد انتهاء العلاج تماماً؟"</blockquote>
+            <p>هذا الأسلوب يساعد المريض على اكتشاف رغبته بالشفاء بنفسه دون الشعور بأي ضغط بيعي تجاري مباشر.</p>
 
-            <div class="signatures">
-                <div>
-                    <strong>توقيع الطبيب الاستشاري</strong>
-                    <div class="line"></div>
-                </div>
-                <div>
-                    <strong>توقيع المريض بالالتزام بالخطة</strong>
-                    <div class="line"></div>
-                </div>
+            <h2>3. الاتفاق المسبق مع المريض (Up-Front Contract)</h2>
+            <p>تنظيم وتوجيه وقت الجلسة الاستشارية الأولى يمنع تردد المريض عند الحديث عن التفاصيل المالية لاحقاً. يلتزم الطبيب بصياغة اتفاق في أول دقيقتين من اللقاء:</p>
+            <blockquote>"سأقوم اليوم بفحصك بدقة لنعرف المشكلة الحقيقية، وفي نهاية الجلسة سأعطيك خطة مكتوبة بمراحلها وتكلفة كل مرحلة، ونقرر معاً من أين نبدأ. هل هذا يناسبك؟"</blockquote>
+
+            <h2>4. تقديم 3 خيارات محددة فقط</h2>
+            <p>حماية المريض من التشتت الناتج عن كثرة التفاصيل الطبية المعقدة. الممارسة الطبية الحديثة تلزم بحصر الحلول المعروضة في <strong>3 خيارات فقط</strong> كحد أقصى:</p>
+            <ul>
+                <li><strong>الحل الأول:</strong> الخطة العلاجية المثالية الكاملة لتحقيق أفضل نتيجة مستدامة.</li>
+                <li><strong>الحل الثاني:</strong> الخطة المرحلية المقسمة على فترات زمنية متباعدة لتسهيل الالتزام.</li>
+                <li><strong>الحل الثالث:</strong> الإجراء الأساسي المستعجل لإيقاف الضرر الحالي فقط.</li>
+            </ul>
+
+            <h2>5. التعامل مع "سأفكر وأتصل لاحقاً"</h2>
+            <p>تطبيق تمرين التناغم الميداني لاكتشاف الاعتراض الحقيقي المخفي وراء التردد. الرد المباشر بلطف وبصيغة مهنية:</p>
+            <blockquote>"بالتأكيد، قرارك مهم جداً. ولكن دعني أسألك: ما الذي يحتاج إلى تفكير أكثر لنتعامل معه الآن؛ هل هو الوقت، التكلفة، أم تفصيل آخر في الخطة الطبية؟"</blockquote>
+
+            <div class="printable-section">
+                <h3>نموذج الخطة العلاجية المكتوبة — للطباعة</h3>
+                <table class="resource-table">
+                    <tr>
+                        <th colspan="2">بيانات المريض</th>
+                    </tr>
+                    <tr>
+                        <td style="width: 30%;"><strong>اسم المريض:</strong></td>
+                        <td>........................................................</td>
+                    </tr>
+                    <tr>
+                        <td><strong>التاريخ:</strong></td>
+                        <td>........................................................</td>
+                    </tr>
+                    <tr>
+                        <td><strong>رقم الملف:</strong></td>
+                        <td>........................................................</td>
+                    </tr>
+                </table>
+
+                <p><strong>1. التشخيص الحالي والمشاكل الناتجة عن تأجيل العلاج:</strong></p>
+                <div style="border: 1px solid #CBD5E1; min-height: 100px; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: white;"></div>
+
+                <p><strong>2. مراحل المنظومة العلاجية المقترحة:</strong></p>
+                <table class="resource-table">
+                    <tr>
+                        <th>المرحلة</th>
+                        <th>الوصف</th>
+                        <th>التكلفة</th>
+                        <th>الجدول</th>
+                    </tr>
+                    <tr>
+                        <td>الأولى</td>
+                        <td>........................................................</td>
+                        <td>..............</td>
+                        <td>..............</td>
+                    </tr>
+                    <tr>
+                        <td>الثانية</td>
+                        <td>........................................................</td>
+                        <td>..............</td>
+                        <td>..............</td>
+                    </tr>
+                    <tr>
+                        <td>الثالثة</td>
+                        <td>........................................................</td>
+                        <td>..............</td>
+                        <td>..............</td>
+                    </tr>
+                </table>
+
+                <p><strong>3. نتيجة الاتفاق المسبق وقبول المريض:</strong></p>
+                <ul>
+                    <li style="padding-right: 0;">☐ المريض وافق على الخطة كاملة وتم تسجيلها على نظام CORE إلكترونياً.</li>
+                    <li style="padding-right: 0;">☐ المريض اختار الحل المرحلي البديل (البدء بالمرحلة الأولى وجدولة الباقي).</li>
+                </ul>
+
+                <table class="resource-table" style="margin-top: 2rem;">
+                    <tr>
+                        <td style="width: 50%;"><strong>توقيع الطبيب الاستشاري:</strong><br><br>........................................................</td>
+                        <td><strong>توقيع المريض بالالتزام بالخطة:</strong><br><br>........................................................</td>
+                    </tr>
+                </table>
             </div>
         </div>
-    </div>
 
-    <div class="footer">
-        <p style="font-size: 1rem; margin-bottom: 0.5rem;">
-            <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> |
-            <a href="tel:+962786595990">+962 78 659 5990</a> |
-            <a href="https://wa.me/962786595990">واتساب</a>
-        </p>
-        <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
+        <div class="footer">
+            <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
+            <p>هذا الدليل خاص بعملاء THE MD CODE. يُمنع النسخ أو التوزيع بدون إذن خطي.</p>
+            <p>
+                <a href="/index.html">الرئيسية</a> |
+                <a href="/tools/resources.html">الموارد</a> |
+                <a href="/contact.html">تواصل معنا</a>
+            </p>
+        </div>
     </div>
-</div>
-
 </body>
 </html>
