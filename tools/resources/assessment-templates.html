@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قوالب التقييم التشخيصي | THE MD CODE</title>
     <link rel="icon" type="image/png" href="/assets/icon-gold.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', sans-serif;
             background: #F9F9F9;
             color: #1A2536;
             line-height: 1.8;
@@ -73,107 +74,51 @@
             border-bottom: 2px solid #C5A059;
             line-height: 1.4;
         }
+        h3 {
+            color: #1A2536;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 1.8rem 0 0.8rem;
+        }
         p {
             margin-bottom: 1.2rem;
             text-align: justify;
             color: #334155;
             line-height: 1.9;
         }
-        .assessment-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+        ul {
+            list-style: none;
+            margin: 1rem 0 1.5rem;
+            padding: 0;
         }
-        .assessment-card {
-            background: white;
-            border: 1px solid #E8E4E1;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .assessment-card h4 {
-            color: #005B5C;
-            font-weight: 700;
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .score-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #F1F5F9;
-            font-size: 0.9rem;
-        }
-        .score-row:last-child {
-            border-bottom: none;
-        }
-        .score-label {
+        li {
+            position: relative;
+            padding-right: 1.8rem;
+            margin-bottom: 0.9rem;
             color: #334155;
-            flex: 1;
-            padding-left: 0.5rem;
+            line-height: 1.8;
         }
-        .score-input {
-            display: flex;
-            gap: 0.25rem;
-            flex-shrink: 0;
-        }
-        .score-btn {
-            width: 32px;
-            height: 32px;
-            border: 2px solid #E2E8F0;
-            border-radius: 6px;
-            background: white;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #64748B;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .score-btn:hover {
-            border-color: #C5A059;
+        li::before {
+            content: "●";
+            position: absolute;
+            right: 0;
+            top: 0.15rem;
             color: #C5A059;
+            font-size: 0.7rem;
         }
-        .score-btn.active {
-            background: #005B5C;
-            border-color: #005B5C;
-            color: white;
+        li strong {
+            color: #005B5C;
         }
-        .total-score {
-            background: linear-gradient(135deg, #005B5C, #1A2536);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            margin: 2rem 0;
-        }
-        .total-score .num {
-            font-size: 2.5rem;
-            font-weight: 800;
-        }
-        .total-score .lbl {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-top: 0.5rem;
-        }
-        .interp {
+        blockquote {
             background: #F0FDF4;
             border-right: 4px solid #005B5C;
-            padding: 1.25rem;
+            padding: 1.25rem 1.5rem;
             margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
-            font-size: 0.95rem;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: #1A2536;
             line-height: 1.9;
-        }
-        .interp strong {
-            color: #005B5C;
+            font-size: 1rem;
         }
         .printable-section {
             background: #FAFAFA;
@@ -189,26 +134,28 @@
             margin-bottom: 1.5rem;
             margin-top: 0;
         }
-        .form-line {
-            border-bottom: 1px dotted #94A3B8;
-            display: inline-block;
-            min-width: 80px;
-            height: 1.5rem;
-            vertical-align: bottom;
+        .resource-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
         }
-        .form-block {
+        .resource-table th, .resource-table td {
             border: 1px solid #CBD5E1;
-            background: white;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 6px;
-            min-height: 60px;
+            padding: 0.8rem;
+            text-align: right;
+            vertical-align: top;
         }
-        .form-block strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1A2536;
-            font-size: 0.95rem;
+        .resource-table th {
+            background: #1A2536;
+            color: white;
+            font-weight: 600;
+        }
+        .resource-table tr:nth-child(even) {
+            background: #F8FAFC;
+        }
+        .resource-table tr:hover {
+            background: #F1F5F9;
         }
         .footer {
             background: #1A2536;
@@ -243,6 +190,9 @@
             box-shadow: 0 4px 20px rgba(197,160,89,0.4);
             z-index: 1000;
             transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         .print-btn:hover {
             transform: translateY(-2px);
@@ -270,11 +220,12 @@
             .header { padding: 2rem 1rem 1.5rem; }
             .header h1 { font-size: 1.4rem; }
             .print-btn { bottom: 1rem; left: 1rem; padding: 0.75rem 1.2rem; font-size: 0.9rem; }
-            .assessment-grid { grid-template-columns: 1fr; }
+            .resource-table { font-size: 0.8rem; }
+            .resource-table th, .resource-table td { padding: 0.5rem; }
         }
 
         @media print {
-            .print-btn, .nav-back, .score-input, .total-score { display: none !important; }
+            .print-btn, .nav-back { display: none !important; }
             .page { box-shadow: none; max-width: 100%; }
             body { background: white; }
             .printable-section {
@@ -284,152 +235,151 @@
             }
             .content { padding: 1.5rem; }
             h2 { page-break-after: avoid; }
-            p { orphans: 3; widows: 3; }
-            .assessment-card { page-break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+            p, li { orphans: 3; widows: 3; }
+            .resource-table { page-break-inside: auto; }
+            .resource-table tr { page-break-inside: avoid; }
             .footer { background: #1A2536 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
 <body>
 
-<a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
-<button onclick="window.print()" class="print-btn no-print">🖨️ طباعة / PDF</button>
+    <a href="/tools/resources.html" class="nav-back no-print">← العودة للموارد</a>
+    
+    <button onclick="window.print()" class="print-btn no-print">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5z" />
+        </svg>
+        طباعة / PDF
+    </button>
 
-<div class="page">
-    <div class="header">
-        <div class="tag">أدوات التقييم الذاتي</div>
-        <h1>قوالب التقييم التشخيصي</h1>
-        <p>نماذج جاهزة لتقييم جميع جوانب العيادة — من الاستقبال إلى العائد المالي</p>
+    <div class="page">
+        <div class="header">
+            <div class="tag">أدوات تقييم ذاتية للمراكز الطبية</div>
+            <h1>قوالب التقييم التشخيصي</h1>
+            <p>تقييم ذاتي شامل لقياس أداء المركز الطبي — من التجربة إلى النتيجة</p>
+        </div>
+
+        <div class="content">
+            <div class="warning-box">
+                <strong>⚠️ تعليمة الاستخدام:</strong> اقرأ كل بند وقيّم وضعك الحالي من 1 (ضعيف جداً) إلى 5 (ممتاز). المجموع الكلي يُعطيك صورة واضحة عن حالة مركزك. يُفضل إجراء هذا التقييم شهرياً لمتابعة التحسن.
+            </div>
+
+            <h2>1. تقييم تجربة المريض (Patient Experience)</h2>
+            <h3>🚪 الاستقبال والترحيب</h3>
+            <table class="resource-table">
+                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
+                <tr><td>سرعة الرد على الاستفسار (أقل من 2 دقيقة)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>نبرة الصوت والترحيب (مهنية ودافئة)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>توضيح الإجراءات والتكاليف مسبقاً</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>تأكيد الموعد قبل 24 ساعة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+            </table>
+
+            <h3>🛋️ بيئة الانتظار والمرافق</h3>
+            <table class="resource-table">
+                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
+                <tr><td>نظافة وتنظيم منطقة الاستقبال</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>راحة الانتظار (مدة أقل من 15 دقيقة)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>خصوصية غرف الكشف</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>توفر المياه/المجلات/شاشة إرشادية</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+            </table>
+
+            <h2>2. تقييم العمليات الإدارية (Operations)</h2>
+            <h3>📋 نظام المواعيد والحجز</h3>
+            <table class="resource-table">
+                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
+                <tr><td>سهولة حجز الموعد (هاتف/واتساب/أونلاين)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>نظام تذكير آلي (رسائل/واتساب)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>إدارة قائمة الانتظار (Waiting List)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>تقليل الغياب (No-Show أقل من 15%)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+            </table>
+
+            <h3>💾 الملفات الرقمية والسجلات</h3>
+            <table class="resource-table">
+                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
+                <tr><td>ملف رقمي كامل لكل مريض</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>سجل الخطة والمواعيد المستقبلية</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>تتبع المتابعة (Follow-up) بعد كل جلسة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>تقارير أسبوعية وشهرية للإدارة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+            </table>
+
+            <h2>3. تقييم الأداء المالي (Financial)</h2>
+            <h3>💰 الإيرادات والتسعير</h3>
+            <table class="resource-table">
+                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
+                <tr><td>متوسط قيمة المريض (APV) مدروس</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>نسبة قبول الخطة الكاملة (أعلى من 60%)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>نسبة التحصيل (Collection Rate أعلى من 90%)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>تنويع مصادر الإيرادات (3 مصادر على الأقل)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+            </table>
+
+            <h3>📉 التكاليف والهدر</h3>
+            <table class="resource-table">
+                <tr><th>البند</th><th style="width: 180px;">التقييم (1-5)</th></tr>
+                <tr><td>تكلفة اكتساب المريض (CAC) محسوبة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>عائد الإنفاق التسويقي (ROAS)</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>تكاليف التشغيل الشهرية مراقبة ومقيدة</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+                <tr><td>مخزون الأدوات/المستلزمات مُدار رقمياً</td><td>☐ 1 &nbsp; ☐ 2 &nbsp; ☐ 3 &nbsp; ☐ 4 &nbsp; ☐ 5</td></tr>
+            </table>
+
+            <div style="background: linear-gradient(135deg, #1A2536, #005B5C); color: white; padding: 2rem; border-radius: 16px; text-align: center; margin: 2.5rem 0;">
+                <div style="font-size: 3rem; font-weight: 800;">____ / 100</div>
+                <div style="font-size: 1rem; opacity: 0.9; margin-top: 0.5rem;">المجموع الكلي من 100 نقطة</div>
+            </div>
+
+            <div style="background: white; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <h4 style="color: #C5A059; margin-bottom: 1rem;">🔍 تفسير النتيجة:</h4>
+                <p style="margin-bottom: 0.75rem;"><strong>85-100:</strong> ممتاز — مركزك في المستوى المتقدم. ركّز على الابتكار والتوسع.</p>
+                <p style="margin-bottom: 0.75rem;"><strong>70-84:</strong> جيد — أساس قوي لكن يوجد نقاط ضعف واضحة تحتاج لتحسين فوري.</p>
+                <p style="margin-bottom: 0.75rem;"><strong>55-69:</strong> متوسط — مركزك يعمل لكنه يخسر إيرادات ومريضاً. تدخل عاجل مطلوب.</p>
+                <p><strong>أقل من 55:</strong> ضعيف — خطر إغلاق أو تراجع حاد. احتاج لإعادة هيكلة شاملة فوراً.</p>
+            </div>
+
+            <div class="printable-section">
+                <h3>تقرير التقييم التشخيصي — للطباعة والأرشفة</h3>
+                <table class="resource-table">
+                    <tr><th colspan="2">بيانات التقييم</th></tr>
+                    <tr><td style="width: 30%;"><strong>اسم المركز:</strong></td><td>........................................................</td></tr>
+                    <tr><td><strong>تاريخ التقييم:</strong></td><td>........................................................</td></tr>
+                    <tr><td><strong>اسم المقيّم:</strong></td><td>........................................................</td></tr>
+                </table>
+
+                <p style="margin-top: 1.5rem;"><strong>المجموع الكلي:</strong> .............. / 100</p>
+
+                <p style="margin-top: 1.5rem;"><strong>أعلى 3 نقاط قوة:</strong></p>
+                <div style="border: 1px solid #CBD5E1; min-height: 40px; border-radius: 8px; padding: 0.75rem; margin: 0.5rem 0; background: white;">1. ..............................................................................................................................................................</div>
+                <div style="border: 1px solid #CBD5E1; min-height: 40px; border-radius: 8px; padding: 0.75rem; margin: 0.5rem 0; background: white;">2. ..............................................................................................................................................................</div>
+                <div style="border: 1px solid #CBD5E1; min-height: 40px; border-radius: 8px; padding: 0.75rem; margin: 0.5rem 0; background: white;">3. ..............................................................................................................................................................</div>
+
+                <p style="margin-top: 1.5rem;"><strong>أعلى 3 نقاط ضعف تحتاج تدخلاً فورياً:</strong></p>
+                <div style="border: 1px solid #CBD5E1; min-height: 40px; border-radius: 8px; padding: 0.75rem; margin: 0.5rem 0; background: white;">1. ..............................................................................................................................................................</div>
+                <div style="border: 1px solid #CBD5E1; min-height: 40px; border-radius: 8px; padding: 0.75rem; margin: 0.5rem 0; background: white;">2. ..............................................................................................................................................................</div>
+                <div style="border: 1px solid #CBD5E1; min-height: 40px; border-radius: 8px; padding: 0.75rem; margin: 0.5rem 0; background: white;">3. ..............................................................................................................................................................</div>
+
+                <p style="margin-top: 1.5rem;"><strong>خطة العمل للـ 30 يوماً القادمة:</strong></p>
+                <div style="border: 1px solid #CBD5E1; min-height: 80px; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: white;"></div>
+
+                <p><strong>الموارد المطلوبة (تدريب/نظام/تمويل):</strong></p>
+                <div style="border: 1px solid #CBD5E1; min-height: 60px; border-radius: 8px; padding: 1rem; margin: 1rem 0; background: white;"></div>
+
+                <table class="resource-table" style="margin-top: 2rem;">
+                    <tr>
+                        <td style="width: 50%;"><strong>توقيع المدير التنفيذي:</strong><br><br>........................................................</td>
+                        <td><strong>التاريخ:</strong><br><br>........................................................</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
+            <p>هذا الدليل خاص بعملاء THE MD CODE. يُمنع النسخ أو التوزيع بدون إذن خطي.</p>
+            <p>
+                <a href="/index.html">الرئيسية</a> |
+                <a href="/tools/resources.html">الموارد</a> |
+                <a href="/contact.html">تواصل معنا</a>
+            </p>
+        </div>
     </div>
-
-    <div class="content">
-        <div class="warning-box">
-            <strong>⚠️ تعليمة الاستخدام:</strong> اقرأ كل بند وقيّم وضعك الحالي من 1 (ضعيف جداً) إلى 5 (ممتاز). المجموع الكلي يُعطيك صورة واضحة عن حالة مركزك. يُفضل إجراء هذا التقييم شهرياً لمتابعة التحسن.
-        </div>
-
-        <h2>1. تقييم تجربة المريض (Patient Experience)</h2>
-        <div class="assessment-grid">
-            <div class="assessment-card">
-                <h4>🚪 الاستقبال والترحيب</h4>
-                <div class="score-row"><span class="score-label">سرعة الرد على الاستفسار (أقل من 2 دقيقة)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">نبرة الصوت والترحيب (مهنية ودافئة)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">توضيح الإجراءات والتكاليف مسبقاً</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">تأكيد الموعد قبل 24 ساعة</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-            </div>
-            <div class="assessment-card">
-                <h4>🛋️ بيئة الانتظار والمرافق</h4>
-                <div class="score-row"><span class="score-label">نظافة وتنظيم منطقة الاستقبال</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">راحة الانتظار (مدة أقل من 15 دقيقة)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">خصوصية غرف الكشف</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">توفر المياه/المجلات/شاشة إرشادية</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-            </div>
-        </div>
-
-        <h2>2. تقييم العمليات الإدارية (Operations)</h2>
-        <div class="assessment-grid">
-            <div class="assessment-card">
-                <h4>📋 نظام المواعيد والحجز</h4>
-                <div class="score-row"><span class="score-label">سهولة حجز الموعد (هاتف/واتساب/أونلاين)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">نظام تذكير آلي (رسائل/واتساب)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">إدارة قائمة الانتظار (Waiting List)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">تقليل الغياب (No-Show أقل من 15%)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-            </div>
-            <div class="assessment-card">
-                <h4>💾 الملفات الرقمية والسجلات</h4>
-                <div class="score-row"><span class="score-label">ملف رقمي كامل لكل مريض</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">سجل الخطة والمواعيد المستقبلية</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">تتبع المتابعة (Follow-up) بعد كل جلسة</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">تقارير أسبوعية وشهرية للإدارة</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-            </div>
-        </div>
-
-        <h2>3. تقييم الأداء المالي (Financial)</h2>
-        <div class="assessment-grid">
-            <div class="assessment-card">
-                <h4>💰 الإيرادات والتسعير</h4>
-                <div class="score-row"><span class="score-label">متوسط قيمة المريض (APV) مدروس</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">نسبة قبول الخطة الكاملة (أعلى من 60%)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">نسبة التحصيل (Collection Rate أعلى من 90%)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">تنويع مصادر الإيرادات (3 مصادر على الأقل)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-            </div>
-            <div class="assessment-card">
-                <h4>📉 التكاليف والهدر</h4>
-                <div class="score-row"><span class="score-label">تكلفة اكتساب المريض (CAC) محسوبة</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">عائد الإنفاق التسويقي (ROAS)</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">تكاليف التشغيل الشهرية مراقبة ومقيدة</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-                <div class="score-row"><span class="score-label">مخزون الأدوات/المستلزمات مُدار رقمياً</span><div class="score-input"><span class="score-btn">1</span><span class="score-btn">2</span><span class="score-btn">3</span><span class="score-btn">4</span><span class="score-btn">5</span></div></div>
-            </div>
-        </div>
-
-        <div class="total-score no-print">
-            <div class="num" id="totalNum">0</div>
-            <div class="lbl">المجموع الكلي من 100 نقطة</div>
-            <div style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.8;">اضغط على الأرقام أعلاه لحساب مجموعك</div>
-        </div>
-
-        <div class="interp">
-            <strong>🔍 تفسير النتيجة:</strong><br><br>
-            <strong>85-100:</strong> ممتاز — مركزك في المستوى المتقدم. ركّز على الابتكار والتوسع.<br>
-            <strong>70-84:</strong> جيد — أساس قوي لكن يوجد نقاط ضعف واضحة تحتاج لتحسين فوري.<br>
-            <strong>55-69:</strong> متوسط — مركزك يعمل لكنه يخسر إيرادات ومريضاً. تدخل عاجل مطلوب.<br>
-            <strong>أقل من 55:</strong> ضعيف — خطر إغلاق أو تراجع حاد. احتاج لإعادة هيكلة شاملة فوراً.
-        </div>
-
-        <div class="printable-section">
-            <h3>تقرير التقييم التشخيصي — للطباعة والأرشفة</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                <div><strong>اسم المركز:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-                <div><strong>تاريخ التقييم:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-                <div><strong>اسم المقيّم:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-            </div>
-            <div style="margin-bottom: 1rem;"><strong>المجموع الكلي:</strong> <span class="form-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> / 100</div>
-
-            <div class="form-block">
-                <strong>أعلى 3 نقاط قوة:</strong>
-                <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 0.5rem;">1. ..............................................................................................................................................................<br>2. ..............................................................................................................................................................<br>3. ..............................................................................................................................................................</p>
-            </div>
-            <div class="form-block">
-                <strong>أعلى 3 نقاط ضعف تحتاج تدخلاً فورياً:</strong>
-                <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 0.5rem;">1. ..............................................................................................................................................................<br>2. ..............................................................................................................................................................<br>3. ..............................................................................................................................................................</p>
-            </div>
-            <div class="form-block">
-                <strong>خطة العمل للـ 30 يوماً القادمة:</strong>
-                <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 0.5rem;">................................................................................................................................................................................................................................................................................................................................................................................................</p>
-            </div>
-            <div class="form-block">
-                <strong>الموارد المطلوبة (تدريب/نظام/تمويل):</strong>
-                <p style="color: #94A3B8; font-size: 0.85rem; margin-top: 0.5rem;">................................................................................................................................................................................................................................................................................................................................................................................................</p>
-            </div>
-
-            <div style="text-align: center; margin-top: 2rem;">
-                <strong>توقيع المدير التنفيذي:</strong>
-                <div style="border-bottom: 1px solid #333; margin: 1.5rem auto 0; width: 60%; height: 40px;"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p style="font-size: 1rem; margin-bottom: 0.5rem;">
-            <a href="mailto:mdcode2026@gmail.com">mdcode2026@gmail.com</a> |
-            <a href="tel:+962786595990">+962 78 659 5990</a> |
-            <a href="https://wa.me/962786595990">واتساب</a>
-        </p>
-        <p>© 2026 THE MD CODE. جميع الحقوق محفوظة.</p>
-    </div>
-</div>
-
-<script>
-    document.querySelectorAll('.score-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.parentElement.querySelectorAll('.score-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            let total = 0;
-            document.querySelectorAll('.score-btn.active').forEach(b => total += parseInt(b.textContent));
-            const el = document.getElementById('totalNum');
-            if (el) el.textContent = total;
-        });
-    });
-</script>
-
 </body>
 </html>
