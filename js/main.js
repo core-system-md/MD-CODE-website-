@@ -223,7 +223,6 @@ const FormHandler = {
 
             if (error) throw error;
 
-            // ✅ فتح واتساب تلقائياً
             const waMessage = WhatsAppAlert.contactTemplate({
                 name: name.value.trim(),
                 email: email.value.trim(),
@@ -408,7 +407,6 @@ const TabSystem = {
 // ============================================
 const DownloadGate = {
     COUNTRIES: [
-        // === الدول العربية ===
         { code: 'JO', name: 'الأردن', flag: '🇯🇴', dial: '+962', regex: /^7[789]\d{7}$/, len: 9 },
         { code: 'SA', name: 'السعودية', flag: '🇸🇦', dial: '+966', regex: /^5\d{8}$/, len: 9 },
         { code: 'AE', name: 'الإمارات', flag: '🇦🇪', dial: '+971', regex: /^5\d{8}$/, len: 9 },
@@ -429,11 +427,9 @@ const DownloadGate = {
         { code: 'MR', name: 'موريتانيا', flag: '🇲🇷', dial: '+222', regex: /^[234]\d{7}$/, len: 8 },
         { code: 'SO', name: 'الصومال', flag: '🇸🇴', dial: '+252', regex: /^[567]\d{7}$/, len: 8 },
         { code: 'DJ', name: 'جيبوتي', flag: '🇩🇯', dial: '+253', regex: /^[78]\d{6}$/, len: 7 },
-        // === دول الشرق الأوسط ===
         { code: 'TR', name: 'تركيا', flag: '🇹🇷', dial: '+90', regex: /^5\d{9}$/, len: 10 },
         { code: 'IR', name: 'إيران', flag: '🇮🇷', dial: '+98', regex: /^9\d{9}$/, len: 10 },
         { code: 'IL', name: 'إسرائيل', flag: '🇮🇱', dial: '+972', regex: /^5\d{8}$/, len: 9 },
-        // === الاتحاد الأوروبي ===
         { code: 'DE', name: 'ألمانيا', flag: '🇩🇪', dial: '+49', regex: /^1\d{10,11}$/, len: 11 },
         { code: 'FR', name: 'فرنسا', flag: '🇫🇷', dial: '+33', regex: /^[67]\d{8}$/, len: 9 },
         { code: 'IT', name: 'إيطاليا', flag: '🇮🇹', dial: '+39', regex: /^3\d{9,10}$/, len: 10 },
@@ -461,11 +457,9 @@ const DownloadGate = {
         { code: 'LU', name: 'لوكسمبورغ', flag: '🇱🇺', dial: '+352', regex: /^6\d{8}$/, len: 9 },
         { code: 'MT', name: 'مالطا', flag: '🇲🇹', dial: '+356', regex: /^[79]\d{7}$/, len: 8 },
         { code: 'CY', name: 'قبرص', flag: '🇨🇾', dial: '+357', regex: /^9\d{7}$/, len: 8 },
-        // === أمريكا الشمالية ===
         { code: 'US', name: 'الولايات المتحدة', flag: '🇺🇸', dial: '+1', regex: /^[2-9]\d{9}$/, len: 10 },
         { code: 'CA', name: 'كندا', flag: '🇨🇦', dial: '+1', regex: /^[2-9]\d{9}$/, len: 10 },
         { code: 'MX', name: 'المكسيك', flag: '🇲🇽', dial: '+52', regex: /^1\d{10}$/, len: 11 },
-        // === دول أخرى شائعة ===
         { code: 'GB', name: 'المملكة المتحدة', flag: '🇬🇧', dial: '+44', regex: /^7\d{9}$/, len: 10 },
         { code: 'CH', name: 'سويسرا', flag: '🇨🇭', dial: '+41', regex: /^7\d{8}$/, len: 9 },
         { code: 'NO', name: 'النرويج', flag: '🇳🇴', dial: '+47', regex: /^[49]\d{7}$/, len: 8 },
@@ -501,7 +495,8 @@ const DownloadGate = {
                 e.preventDefault();
                 const asset = btn.dataset.asset;
 
-                if (sessionStorage.getItem(`downloaded_${asset}`)) {
+                const gateTime = localStorage.getItem('mdcode_gate_time');
+                if (gateTime && (Date.now() - parseInt(gateTime)) < (1000 * 60 * 60)) {
                     this.openFile(asset);
                     return;
                 }
@@ -813,7 +808,7 @@ const DownloadGate = {
                 }]);
             }
 
-            sessionStorage.setItem(`downloaded_${asset}`, 'true');
+            localStorage.setItem('mdcode_gate_time', Date.now().toString());
 
             this.showMessage(msgDiv, '✅ تم الحفظ! جاري فتح الملف...', 'success');
 
